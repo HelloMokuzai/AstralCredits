@@ -24,9 +24,9 @@ SUPPORT
 - You can support the development of the XAC project by purchasing NFT badges - [Sparkles NFTs](https://sparklesnft.com/collection/astralcredits/) 
 
 JOIN THE COMMUNITY
-- Reddit
-- Discord
-- Twitter
+- Reddit - TBA
+- Discord - TBA
+- Twitter - TBA
 
 DISCLAIMER
 
