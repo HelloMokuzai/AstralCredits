@@ -20,7 +20,7 @@ VISION
 - To bootstrap a completely self-sustaining ecosystem through free distribution of XAC tokens.
 
 TEAM
-- MKZI
+- MKZI⚡
 
 SUPPORT
 - You can support the development of the XAC project by purchasing NFT badges - [Sparkles NFTs](https://sparklesnft.com/collection/astralcredits/) 
