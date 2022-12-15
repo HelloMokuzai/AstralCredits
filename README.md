@@ -1,3 +1,5 @@
+<img src="https://github.com/HelloMokuzai/AstralCredits/blob/main/images/XAC.png" alt="drawing" width="200" height="200"/>
+
 # AstralCredits
 
 Astral Credits (XAC) is an ERC20 token on the SONGBIRD Network.
