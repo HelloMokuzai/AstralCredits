@@ -28,4 +28,4 @@ JOIN THE COMMUNITY
 
 DISCLAIMER
 
-_Astral Credits (XAC) is an experimental project created with the objective of progressing my development skills in the field of Cryptocurrency. Astral Credits are distributed freely and I make no garuantees that the project will result in the XAC token gaining any tradable value. If you are interesting in Cryptocurrency and its net benefit to humanity - I recomend learning about Bitcoin (https://bitcoin.org/)_
+_Astral Credits (XAC) is an experimental project created with the objective of progressing my development skills in the field of Cryptocurrency. Astral Credits are distributed freely and I make no garuantees that the project will result in the XAC token gaining any tradable value.
