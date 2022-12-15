@@ -9,7 +9,7 @@ Astral Credits will be distributed FREE to the Songbird community via a faucet w
 MONETARY POLICY 
 - Fixed supply cap - 1B Tokens in total.
 - Deflationary supply schedule (Through faucet distribution).
-- Free & fair distribution model - 80% of tokens to be distributed freely. With remaining 20% reserves kept for future projects and to expand the ecosystem.
+- Free & fair distribution model - 80% of tokens to be distributed freely. With remaining 20% in reserve for future projects to expand the ecosystem.
 - Low Cost & Near Instant transaction finality - Using the Songbird PoS smart contract protocol.
 
 VISION
