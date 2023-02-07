@@ -20,16 +20,15 @@ VISION
 - To bootstrap a completely self-sustaining ecosystem through free distribution of XAC tokens.
 
 TEAM
-- MKZI⚡
+- MKZI⚡, PRUSSIA, DABz
 
 SUPPORT
 - You can support the development of the XAC project by purchasing NFT badges - [Sparkles NFTs](https://sparklesnft.com/collection/astralcredits/) 
 
 JOIN THE COMMUNITY
-- Reddit - TBA
-- Discord - TBA
-- Twitter - TBA
+- [Discord](https://discord.gg/AJd4YDZSqD)
+- [Twitter](https://twitter.com/AstralCredits)
 
 DISCLAIMER
 
-_Please view out Terms of Service._
+_Please view out [Terms of Service](https://github.com/HelloMokuzai/AstralCredits/blob/main/docs/Terms-of-Service.pdf)._
