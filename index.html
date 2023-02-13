@@ -86,7 +86,7 @@
 						<div class="inner">
 							<header class="major">
 								<h2><b>Astral Credits</b> Faucet</h2>
-                                <p><img src="images/AstralCreds-Animated.gif" alt="" width="15%" height="15%" /></p>
+                                <p><img src="images/AstralCreds-Animated.gif" alt="" width="30%" height="30%" /></p>
                             </header>
                             
                             	<h1>How to use:</h1>
@@ -101,8 +101,8 @@
 									</div>
                                     <div class="col-12">
 										<ul class="actions">
-											<li><input type="submit" value="Receive XAC"/></li>
-											<li><input type="reset" value="Reset" /></li>
+											<li><input type="submit" value="Receive XAC" class="disabled" /></li>
+											<li><input type="reset" value="Reset" class="disabled"  /></li>
 										</ul>
 									</div>
 								</div>
@@ -128,27 +128,50 @@
 							</ul> 
 						</div>
 					</section>
+                    
+               <!-- Support --> 
+                     <section id="Support" class="wrapper style1 special">
+						<div class="inner">
+                        	<header class="major">
+								<h2>SUPPORT <b>the Astral Credits project</b></h2>
+								<p>You can support development by purchasing an Astral Credits NFT badge on Sparkles. Badge holders are eligible to recieve XAC airdrops (1:1 of RRP) and can claim Citizenship status on the Astral Credits <a href="https://discord.gg/AJd4YDZSqD" target="_blank">Community Discord</a>, which provides additional perks such as access to private channels and other opportunities to earn XAC such as giveaways and competitions!</p>
+							</header>
+                            		<div class="box alt">
+										<div class="row aln-center gtr-25 gtr-uniform">
+											<div class="col-2"><span class="image fit"><img src="images/AstralCredits-XAC.png" alt="" /></span></div>
+											<div class="col-2"><span class="image fit"><img src="images/AstralCreds-Animated2.gif" alt="" /></span></div>
+											<div class="col-2"><span class="image fit"><img src="images/AstralCreds-Animated3.gif" alt="" /></span></div>
+											<div class="col-2"><span class="image fit"><img src="images/AstralCreds-Animated.gif" alt="" /></span></div>
+                                        	<div class="col-2"><span class="image fit"><img src="images/AstralCreds-Animated4.gif" alt="" /></span></div>
+                                        </div> 
+									</div>
+                                    <p><a href="https://sparklesnft.com/collection/astralcredits/" class="button" target="_blank">View on Sparkles</a></p>
+									<p><b>Please also consider donating Songbird (SGB) to the address below to provide gas fees for use in the faucet for distribution of XAC to the community.</b></p>
+                            		<p><a onclick="DonateFunction()";><input type="text" value="0x5F9035bC7202F8A990fbdf750CEEBcD708815Cf3" id="DonateAddress"></a></p>
+                                    <p>Thank you for your support! ❤️</p>
+                            
+						</div>
+                    </section>
 
 				<!-- Footer -->
 					<footer id="footer">
 						<ul class="icons">
-							<li><a href="https://twitter.com/AstralCredits" class="icon brands fa-twitter" target="_blank"><span class="label">Twitter</span></a></li>
-							<li><a href="https://discord.gg/AJd4YDZSqD" class="icon brands fa-discord" target="_blank"><span class="label">Discord</span></a></li>
+							<li><a href="https://twitter.com/HelloMokuzai" class="icon brands fa-twitter" target="_blank"><span class="label">Twitter</span></a></li>
+							<li><a href="https://discordapp.com/users/Pinklesneezer#7457" class="icon brands fa-discord" target="_blank"><span class="label">Discord</span></a></li>
 							<li><a href="https://www.reddit.com/user/HelloMokuzai" class="icon brands fa-reddit-alien" target="_blank"><span class="label">Reddit</span></a></li>
 							<li><a href="https://github.com/HelloMokuzai/AstralCredits" class="icon brands fa-github" target="_blank"><span class="label">Github</span></a></li>
-							<li><a href="mailto:AstralCredits@outlook.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+							<li><a href="mailto:hellomokuzai@outlook.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
 						</ul>
+                         
 						<ul class="copyright">
 							<li>&copy; Astral Credits 2022</li>
-                            <li>Mokuzai Design Labs</li>
+                            <li>MKZI Design Labs</li>
 						</ul>
+                        <div class="inner">
+                        <b>DISCLAIMER:</b> Please ensure you have read our <a href="docs/Terms-of-Service.pdf" target="_blank">TERMS OF SERVICE</a> before proceeding.
+                        </div>
 					</footer>
                     
-                    <section id="disclaimer" class="wrapper style1 special">
-						<div class="inner">
-                        	 <b>DISCLAIMER:</b> Please ensure you have read our <a href="docs/Terms-of-Service.pdf" target="_blank">TERMS OF SERVICE</a> before proceeding.
-						</div>
-                    </section>
 			</div>
 
 		<!-- Scripts -->
@@ -159,9 +182,18 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-            <script>
+            		<script>
 				function ContractFunction() {
  				var copyText = document.getElementById("ContractAddress");
+  				copyText.select();
+  				copyText.setSelectionRange(0, 99999)
+  				document.execCommand("copy");
+  				alert("Copied to clipboard: " + copyText.value);
+				}
+			</script>
+			<script>
+				function DonateFunction() {
+ 				var copyText = document.getElementById("DonateAddress");
   				copyText.select();
   				copyText.setSelectionRange(0, 99999)
   				document.execCommand("copy");
