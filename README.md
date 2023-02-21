@@ -4,7 +4,7 @@
 
 Astral Credits (XAC) is an ERC20 token on the SONGBIRD Network.
 
-Webite: https://hellomokuzai.github.io/AstralCredits/
+Webite: https://astralcredits.xyz/
 
 Token Address: [0x61b64c643fCCd6ff34Fc58C8ddff4579A89E2723](https://songbird-explorer.flare.network/token/0x61b64c643fCCd6ff34Fc58C8ddff4579A89E2723/token-transfers)
 
