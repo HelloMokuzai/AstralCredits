@@ -1,4 +1,4 @@
-<img src="https://github.com/HelloMokuzai/AstralCredits/main/static/images/AstralCredits-XAC.png" alt="drawing" width="200" height="200"/>
+<img src="https://raw.githubusercontent.com/HelloMokuzai/AstralCredits/main/static/images/AstralCredits-XAC.png" alt="drawing" width="200" height="200"/>
 
 # AstralCredits
 
