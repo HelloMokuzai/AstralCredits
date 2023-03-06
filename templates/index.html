@@ -1,0 +1,347 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Astral Credits | XAC - Part of the SONGBIRD universe!</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta property="og:site_name" content="Astral Credits | XAC">
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="https://astralcredits.xyz/">
+		<meta property="og:image" content="https://raw.githubusercontent.com/HelloMokuzai/AstralCredits/main/images/banner3.jpg">
+		<meta property="og:description" content="Distributed FREELY to the SONGBIRD community! Our vision is to bootstrap a completely self-sustaining ecosystem through the free & fair distribution of XAC tokens to the SONGBIRD community. Astral Credits boasts a fixed supply cap, sound monetary policy and a free & fair distribution model to promote strong Store of Value (SoV) like properties.">
+		<meta name="twitter:card" content="summary_large_image"/>
+		<meta name="twitter:title" content="Astral Credits | XAC"/>
+		<meta name="twitter:description" content="Distributed FREELY to the SONGBIRD community! Our vision is to bootstrap a completely self-sustaining ecosystem through the free & fair distribution of XAC tokens to the SONGBIRD community. Astral Credits boasts a fixed supply cap, sound monetary policy and a free & fair distribution model to promote strong Store of Value (SoV) like properties."/>
+		<meta name="twitter:site" content="@AstralCredits"/>
+		<meta name="twitter:image" content="https://raw.githubusercontent.com/HelloMokuzai/AstralCredits/main/images/banner3.jpg"/>
+		<meta name="twitter:creator" content="@HelloMokuzai"/>
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+		<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="landing is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<h1><a href="index.html">Astral Credits | <b>XAC</b></a></h1>
+						<nav id="nav">
+							<ul>
+								<li class="special">
+									<a href="#menu" class="menuToggle"><span>Menu</span></a>
+									<div id="menu">
+										<ul>
+											<li><a href="#banner">Home</a></li>
+											<li><a href="#discover" class="scrolly">Discover</a></li>
+											<li><a href="#faucet" class="scrolly">Faucet</a></li>
+											<li><a href="#support" class="scrolly">Support</a></li>
+											<li><a href="#cta" class="scrolly">Technical</a></li>
+											<li><a href="#footer" class="scrolly">Contact</a></li>
+										</ul>
+									</div>
+								</li>
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Banner -->
+					<section id="banner">
+						<div class="inner">
+													<h2><rain>ASTRAL CREDITS</rain></h2>
+														<p><img src="images/logo.svg" alt="" width="20%" height="20%" /></p>
+														Distributed FREELY to explorers<br />
+							of the <a href="https://flare.network/songbird/" target="_blank">SONGBIRD</a> network!</p>
+							<ul class="actions special">
+								<li><a href="#faucet" class="button primary scrolly" >CLAIM XAC</a></li>
+							</ul>
+						</div>
+						<a href="#discover" class="more scrolly">Explore the Galaxy</a>
+					</section>
+										
+								<!-- Dsicover -->
+										<section id="discover" class="wrapper style3 special">
+						<div class="inner">
+							<header class="major">
+								<h2><b>Utility for the new</b> GALACTIC <b>economy</b></h2>
+								<p>Our vision is to bootstrap a completely self-sustaining ecosystem through the free & fair distribution of XAC tokens to the SONGBIRD community. Astral Credits boasts a fixed supply cap, sound monetary policy and a free & fair distribution model to promote strong Store of Value (SoV) like properties.</p>
+							</header>
+							<ul class="features">
+								<li class="icon solid fa-coins">
+									<h3>Fixed Supply Cap</h3>
+									<p>A hard cap of 1 BILLION Astral Credits have been minted to ensure the value each token represents cannot be debased through monetary inflation.</p>
+								</li>
+								<li class="icon solid fa-chart-line">
+									<h3>Deflationary Supply Schedule</h3>
+									<p>Tokens are distributed to the community for FREE via a faucet with a built-in deflationary supply schedule to help promote strong Store of Value (SoV) like properties.</p>
+								</li>
+								<li class="icon solid fa-handshake">
+									<h3>Free & Fair Distribution</h3>
+									<p>80% of tokens to be distributed FREELY to the community. With the remaining 20% in reserve to aid in funding future projects and to help expand the XAC ecosystem.</p>
+								</li>
+								<li class="icon solid fa-lock">
+									<h3>Secure, Fast & Low Cost</h3>
+									<p>Astral Credits utilises the SONGBIRD PoS smart contract network which enables low fees with near instant transaction finality.</p>
+								</li>
+							</ul>
+						</div>
+					</section>
+
+				<!-- Faucet -->
+					<section id="faucet" class="wrapper style2 special">
+						<div class="inner">
+							<header class="major">
+								<h2 id="astral-faucet"><rain><b>Astral Credits</b> Faucet</rain></h2>
+									<p><img src="images/AstralCreds-Animated.gif" alt="" width="25%" height="25%" /></p>
+										</header>
+											<h2>HOW TO USE</h2>
+												<p>Step 1. <a href="https://docs.flare.network/user/wallets/how-to-access-flare-network-with-metamask/" target="_blank">Add the SONGBIRD network</a> to your wallet if not natively supported.<br />
+												Step 2. <a href="#cta" class="scrolly">Add the XAC token address</a> to your wallet.<br />
+												Step 3. Enter your address below to receive your Astral Credits!</p>
+												<p style="display: none;" id="faucet-open-countdown">Faucet Opens in:<br><span id="faucet-open-days">x</span> Days <span id="faucet-open-hours">x</span> Hours <span id="faucet-open-minutes">x</span> Minutes <span id="faucet-open-seconds">x</span> Seconds</span></p>
+							
+												{% if error %}
+												<p class="error"><error>ERROR! {{ error }}</error></p>
+												{% endif %}
+												{% if tx %}
+												<p class="payout"><success>SUCCESS! You have received </success><a href="https://songbird-explorer.flare.network/tx/{{ tx }}" target="_blank">{{ amount }}</a><success> Astral Credits!</success></p>
+												{% endif %}
+							
+							<form method="POST" action="/" id="faucet-form">
+								<div class="row gtr-uniform">
+									<div class="col-12">
+										<input type="text" name="address" id="Address" value="" placeholder="Address: 0x..." required />
+									</div>
+									<div class="col-12">
+										<ul class="actions">
+											<li><button class="h-captcha claim" data-sitekey="6741658e-3355-4259-93a2-daea85b20d1a" data-callback="onSubmit">Receive XAC</button></li>
+											<li><input id="faucet-reset" type="reset" value="Reset" onclick="Reset()"	/></li>
+										</ul>
+									</div>
+								</div>
+							</form>
+
+							<h1>Distribution Info</h1>
+									<div class="table-wrapper">
+										<table>
+											<tbody>
+												<tr>
+													<td>Current Payout Amount:</td>
+													<td><span id="current-payout">x</span> XAC</td>
+												</tr>
+												<tr>
+													<td>Claims Remaining this Month:</td>
+													<td><span id="uses-left">{{ uses_left }}</span> Remaining</td>
+												</tr>
+												<tr>
+													<td>Monthly Claims Reset Timer:</td>
+													<td><span id="month-days">x</span> Days <span id="month-hours">x</span> Hours <span id="month-minutes">x</span> Minutes <span id="month-seconds">x</span> Seconds</span></td>
+												</tr>
+												<tr>
+													<td>Payout Halving Timer:</td>
+													<td><span id="halving-days">x</span> Days <span id="halving-hours">x</span> Hours <span id="halving-minutes">x</span> Minutes <span id="halving-seconds">x</span> Seconds</span></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+
+						</div>
+					</section>
+
+				<!-- Support --> 
+					<section id="support" class="wrapper style1 special">
+						<div class="inner">
+							<header class="major">
+								<h2>SUPPORT <b>the Astral Credits project</b></h2>
+								<p>Support the Astral Credits project today by purchasing an Astral Credits NFT badge on Sparkles! Badge holders will have the unique opportunity to secure additional
+tokens beyond those distributed via the faucet by receiving routine airdrops 1:1 of the RRP (XAC to SGB) on each halving event. NFT Holders can also claim Citizenship status via the <a href="https://discord.gg/AJd4YDZSqD" target="_blank">Astral Credits Community Discord</a>, which provides additional perks such as access to private channels and exclusive opportunities to earn XAC through giveaways and competitions!</p>
+							</header>
+								<div class="box alt">
+									<div class="row aln-center gtr-25 gtr-uniform">
+										<div class="col-2"><span class="image fit"><img src="images/AstralCredits-XAC.png" alt="" /></span></div>
+										<div class="col-2"><span class="image fit"><img src="images/AstralCreds-Animated2.gif" alt="" /></span></div>
+										<div class="col-2"><span class="image fit"><img src="images/AstralCreds-Animated3.gif" alt="" /></span></div>
+										<div class="col-2"><span class="image fit"><img src="images/AstralCreds-Animated.gif" alt="" /></span></div>
+										<div class="col-2"><span class="image fit"><img src="images/AstralCreds-Animated4.gif" alt="" /></span></div>
+									</div> 
+								</div>
+									<p><a href="https://sparklesnft.com/collection/astralcredits/" class="button" target="_blank"><i class="icon solid fa-shopping-cart"></i> Buy on Sparkles</a></p>
+									<p><b>Please also consider donating Songbird (SGB) to the address below to provide gas fees for use in the faucet for distribution of XAC to the community. A small amount can go a long way!</b></p>
+									<p><a onclick="DonateFunction()";><input type="text" value="0x5F9035bC7202F8A990fbdf750CEEBcD708815Cf3" id="DonateAddress"></a></p>
+									<p>Thank you for your support! ❤️</p>					
+						</div>
+					</section>
+
+				<!-- Technical -->
+					<section id="cta" class="wrapper style4">
+						<div class="inner">
+							<header>
+															<span class="image right"><img src="images/qr-code.svg" alt=""/></span>
+								<h3>Technical</h2>
+								<p>Astral Credits (XAC) is an ERC20 token on the <a href="https://flare.xyz/introducing-songbird/" target="_blank">SONGBIRD</a> Network.</br>
+																<form><input type="text" value="0x61b64c643fCCd6ff34Fc58C8ddff4579A89E2723" id="ContractAddress"></form> 
+																<a class="button" onclick="ContractFunction()";><i class="icon solid fa-copy"></i> Copy to Clipboard</a></p>
+							</header>
+							<ul class="actions stacked">
+								<li><a href="docs/Whitepaper.pdf" class="button primary fit" target="_blank"><i class="icon solid fa-newspaper"></i> Whitepaper</a></li> 
+								<li><a href="https://songbird-explorer.flare.network/token/0x61b64c643fCCd6ff34Fc58C8ddff4579A89E2723/token-transfers" class="button fit" target="_blank">View Contract</a></li>
+								<li><a href="https://docs.flare.network/user/wallets/how-to-access-flare-network-with-metamask/" class="button fit" target="_blank">Add Songbird</a></li>
+							</ul> 
+						</div>
+					</section>			
+
+				<!-- Footer -->
+					<footer id="footer">
+
+						<ul class="icons">
+							<li><a href="https://twitter.com/AstralCredits" class="icon brands fa-twitter" target="_blank"><span class="label">Twitter</span></a></li>
+							<li><a href="https://discord.gg/AJd4YDZSqD" class="icon brands fa-discord" target="_blank"><span class="label">Discord</span></a></li>
+							<li><a href="https://github.com/HelloMokuzai/AstralCredits" class="icon brands fa-github" target="_blank"><span class="label">Github</span></a></li>
+							<li><a href="mailto:astralcredits@outlook.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+						</ul>
+
+						<ul class="copyright">
+							<li>&copy; Astral Credits 2022</li>
+							<li>MKZI Design Labs</li>
+							<li><a href="docs/Terms-of-Service.pdf" target="_blank">Terms of Service</a></li>
+						</ul>
+						
+						<div>
+						<p>Protected by hCaptcha - <a href="https://www.hcaptcha.com/privacy">Privacy Policy</a> | <a href="https://www.hcaptcha.com/terms">Terms of Service</a>
+						</div>
+					</footer>
+										
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script>
+				function ContractFunction() {
+					var copyText = document.getElementById("ContractAddress");
+					copyText.select();
+					copyText.setSelectionRange(0, 99999)
+					document.execCommand("copy");
+					alert("Copied to clipboard: " + copyText.value);
+				}
+				function DonateFunction() {
+					var copyText = document.getElementById("DonateAddress");
+					copyText.select();
+					copyText.setSelectionRange(0, 99999)
+					document.execCommand("copy");
+					alert("Copied to clipboard: " + copyText.value);
+				}
+				function Reset() {
+					document.getElementById("Address").value = "";
+				}
+				
+				const START_YEAR = 2023;
+				const START_MONTH = 1;
+				
+				const START_PAYOUT = 6000;
+				
+				//return number of months since start of distribution
+				//starts at month 0
+				function get_month() {
+					let date = new Date();
+					let years = date.getFullYear()-START_YEAR;
+					let months = date.getMonth()-START_MONTH;
+					return years*12+months;
+				}
+				
+				//get amount to payout, for current month
+				function get_amount() {
+					let month = get_month();
+					let halvings = Math.floor(month/6);
+					let payout = START_PAYOUT;
+					//payout halves every six months
+					for (let i=0; i < halvings; i++) {
+						payout = payout/2;
+					}
+					return payout;
+				}
+
+				document.getElementById("current-payout").innerText = String(get_amount());
+
+				//countdown shit
+				//next month
+				function next_month_calc() {
+					let current_date = new Date();
+					let next_month = new Date(Date.UTC(current_date.getFullYear(), current_date.getMonth()+1));
+					let seconds_until = (next_month.getTime() - current_date.getTime()) / 1000;
+					let days_until = Math.floor(seconds_until / (60 * 60 * 24));
+					document.getElementById("month-days").innerText = String(days_until);
+					seconds_until -= days_until * (60 * 60 * 24);
+					let hours_until = Math.floor(seconds_until / (60 * 60));
+					document.getElementById("month-hours").innerText = String(hours_until);
+					seconds_until -= hours_until * (60 * 60);
+					let minutes_until = Math.floor(seconds_until / (60));
+					document.getElementById("month-minutes").innerText = String(minutes_until);
+					seconds_until -= minutes_until * (60);
+					document.getElementById("month-seconds").innerText = String(Math.round(seconds_until));
+				}
+				next_month_calc();
+				setInterval(next_month_calc, 1000);
+				//next halving
+				function next_halving_calc() {
+					let current_date = new Date();
+					let months_till_halving = 6-(get_month()%6)
+					let next_halving = new Date(Date.UTC(current_date.getFullYear(), current_date.getMonth()+months_till_halving));
+					let seconds_until = (next_halving.getTime() - current_date.getTime()) / 1000;
+					let days_until = Math.floor(seconds_until / (60 * 60 * 24));
+					document.getElementById("halving-days").innerText = String(days_until);
+					seconds_until -= days_until * (60 * 60 * 24);
+					let hours_until = Math.floor(seconds_until / (60 * 60));
+					document.getElementById("halving-hours").innerText = String(hours_until);
+					seconds_until -= hours_until * (60 * 60);
+					let minutes_until = Math.floor(seconds_until / (60));
+					document.getElementById("halving-minutes").innerText = String(minutes_until);
+					seconds_until -= minutes_until * (60);
+					document.getElementById("halving-seconds").innerText = String(Math.round(seconds_until));
+				}
+				next_halving_calc();
+				setInterval(next_halving_calc, 1000);
+				function onSubmit(token) {
+					document.getElementById('faucet-form').submit();
+				}
+				//1678190400 is tues march 2023
+				const faucet_open_date = 1678190400;
+				if (Math.floor(Date.now()/1000) < faucet_open_date) {
+					//faucet not open yet
+					document.getElementById("Address").disabled = true;
+					document.getElementsByClassName("claim")[0].classList.add("disabled");
+					document.getElementById("faucet-reset").classList.add("disabled") 
+					document.getElementById("faucet-open-countdown").style.display = "block";
+					function faucet_open_calc() {
+						let current_date = new Date();
+						let seconds_until = (faucet_open_date*1000 - current_date.getTime()) / 1000;
+						let days_until = Math.floor(seconds_until / (60 * 60 * 24));
+						document.getElementById("faucet-open-days").innerText = String(days_until);
+						seconds_until -= days_until * (60 * 60 * 24);
+						let hours_until = Math.floor(seconds_until / (60 * 60));
+						document.getElementById("faucet-open-hours").innerText = String(hours_until);
+						seconds_until -= hours_until * (60 * 60);
+						let minutes_until = Math.floor(seconds_until / (60));
+						document.getElementById("faucet-open-minutes").innerText = String(minutes_until);
+						seconds_until -= minutes_until * (60);
+						document.getElementById("faucet-open-seconds").innerText = String(Math.round(seconds_until));
+					}
+					faucet_open_calc();
+					setInterval(faucet_open_calc, 1000);
+				}
+				//
+			</script>
+			{% if tx or error %}
+				<script>
+					window.location.hash = "astral-faucet";
+				</script>
+			{% endif %}
+	</body>
+</html>
