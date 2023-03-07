@@ -35,7 +35,9 @@ async function faucet_dry() {
 async function send_token(address, amount) {
   amount = ethers.utils.parseUnits(amount, 18);
   try {
-    return await astral_token.transfer(address, amount);
+    return await astral_token.transfer(address, amount, {
+      gasPrice: ethers.utils.parseUnits('55', 'gwei')
+    });
   } catch (e) {
     console.log(e);
     return false;
