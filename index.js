@@ -97,6 +97,12 @@ app.post('/', async function(req, res) {
 	  if (!enough_balance) {
 	    error = "Need to hold at least "+String(HOLDING_REQUIREMENT)+" Songbird or Wrapped Songbird to use faucet (this is an anti-botting measure!)";
 	  }
+    if (!error) {
+      let aged_enough = await songbird.aged_enough(address, HOLDING_REQUIREMENT);
+      if (!aged_enough) {
+        error = "Need to have held at least "+String(HOLDING_REQUIREMENT)+" Songbird or Wrapped Songbird for at least 1 hour (1800 blocks) before claim (this is an anti-botting measure!)";
+      }
+    }
 	}
   //if success, try to send
   let amount = String(db.get_amount());
