@@ -21,8 +21,8 @@ async function get_bal(address) {
 
 //check if they hold enough wrapped songbird or songbird to use the faucet
 async function enough_balance(address, holding_requirement) {
-	let wrapped_bal = await wrapped_songbird_token.balanceOf(address);
-	wrapped_bal = ethers.utils.formatUnits(wrapped_bal.toString(), 18);
+  let wrapped_bal = await wrapped_songbird_token.balanceOf(address);
+  wrapped_bal = ethers.utils.formatUnits(wrapped_bal.toString(), 18);
   return Number(wrapped_bal) >= holding_requirement || Number(await get_bal(address)) >= holding_requirement;
 }
 
@@ -67,9 +67,9 @@ async function aged_enough(address, holding_requirement) {
 }
 
 async function faucet_dry() {
-	//slightly inaccurate but ethersjs parse units was just not working for me..
-	let bal = await astral_token.balanceOf(wallet.address);
-	bal = ethers.utils.formatUnits(bal.toString(), 18);
+  //slightly inaccurate but ethersjs parse units was just not working for me..
+  let bal = await astral_token.balanceOf(wallet.address);
+  bal = ethers.utils.formatUnits(bal.toString(), 18);
   return Number(bal) < 6000;
 }
 
@@ -87,7 +87,7 @@ async function send_token(address, amount) {
 
 module.exports = {
   get_bal: get_bal,
-	enough_balance: enough_balance,
+  enough_balance: enough_balance,
   aged_enough: aged_enough,
   faucet_dry: faucet_dry,
   send_token: send_token,
