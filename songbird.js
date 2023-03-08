@@ -27,24 +27,43 @@ async function enough_balance(address, holding_requirement) {
 }
 
 async function aged_enough(address, holding_requirement) {
+  let holding_enough = false;
   //get current block
   let current_block = await provider.getBlockNumber();
   //block time is 2 seconds so 1800 blocks is around 1 hour
   let songbird_resp = await fetch("https://songbird-explorer.flare.network/api?module=account&action=eth_get_balance&address="+address+"&block="+String(current_block-1800));
   songbird_resp = await songbird_resp.json();
-  if (songbird_resp.error) return false;
-  let songbird_snapshot = Number(ethers.utils.formatEther(songbird_resp.result));
-  if (songbird_snapshot < holding_requirement) return false;
+  if (!songbird_resp.error) {
+    let songbird_snapshot = Number(ethers.utils.formatEther(songbird_resp.result));
+    if (songbird_snapshot >= holding_requirement) {
+      holding_enough = true;
+    }
+  }
   let wrapped_songbird_resp = await fetch("https://songbird-explorer.flare.network/api?module=account&action=tokentx&address="+address);
   wrapped_songbird_resp = await wrapped_songbird_resp.json();
-  if (!wrapped_songbird_resp.result) return false;
-  wrapped_songbird_resp = wrapped_songbird_resp.result;
-  //timestamp attribute can also be used but whatever
-  wrapped_songbird_resp = wrapped_songbird_resp.filter(function(item) {
-    return item.tokenName === "Wrapped Songbird" && item.blockNumber <= current_block-1800;
-  });
-  if (wrapped_songbird_resp.length == 0) return false;
-  return true;
+  if (wrapped_songbird_resp.result) {
+    wrapped_songbird_resp = wrapped_songbird_resp.result;
+    //timestamp attribute can also be used but whatever
+    wrapped_songbird_resp = wrapped_songbird_resp.filter(function(item) {
+      return item.tokenName === "Wrapped Songbird" && item.blockNumber <= current_block-1800;
+    });
+    let wrapped_songbird_snapshot = 0;
+    for (let i=0; i < wrapped_songbird_resp.length; i++) {
+      if (wrapped_songbird_resp[i].to.toLowerCase() === address.toLowerCase()) {
+        wrapped_songbird_snapshot += Number(ethers.utils.formatUnits(wrapped_songbird_resp[i].value, 18));
+      } else {
+        wrapped_songbird_snapshot -= Number(ethers.utils.formatUnits(wrapped_songbird_resp[i].value, 18));
+      }
+    }
+    if (wrapped_songbird_snapshot >= holding_requirement) {
+      holding_enough = true;
+    }
+  }
+  if (holding_enough) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 async function faucet_dry() {
