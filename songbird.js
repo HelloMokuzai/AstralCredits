@@ -44,8 +44,9 @@ async function aged_enough(address, holding_requirement) {
   if (wrapped_songbird_resp.result) {
     wrapped_songbird_resp = wrapped_songbird_resp.result;
     //timestamp attribute can also be used but whatever
+    //get token transfers within the hour and see if the (balance)-(total received)=(balance one hour ago) is above the holding req or not
     wrapped_songbird_resp = wrapped_songbird_resp.filter(function(item) {
-      return item.tokenName === "Wrapped Songbird" && item.blockNumber <= current_block-1800;
+      return item.tokenName === "Wrapped Songbird" && item.blockNumber >= current_block-1800;
     });
     let wrapped_songbird_snapshot = 0;
     for (let i=0; i < wrapped_songbird_resp.length; i++) {
@@ -55,7 +56,9 @@ async function aged_enough(address, holding_requirement) {
         wrapped_songbird_snapshot -= Number(ethers.utils.formatUnits(wrapped_songbird_resp[i].value, 18));
       }
     }
-    if (wrapped_songbird_snapshot >= holding_requirement) {
+    let wrapped_bal = await wrapped_songbird_token.balanceOf(address);
+    wrapped_bal = ethers.utils.formatUnits(wrapped_bal.toString(), 18);
+    if ((wrapped_bal-wrapped_songbird_snapshot) >= holding_requirement) {
       holding_enough = true;
     }
   }
