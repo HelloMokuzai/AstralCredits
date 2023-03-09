@@ -30,8 +30,8 @@ async function aged_enough(address, holding_requirement) {
   let holding_enough = false;
   //get current block
   let current_block = await provider.getBlockNumber();
-  //block time is 2 seconds so 1800 blocks is around 1 hour
-  let songbird_resp = await fetch("https://songbird-explorer.flare.network/api?module=account&action=eth_get_balance&address="+address+"&block="+String(current_block-1800));
+  //block time is 2 seconds so 43200 blocks is around 24 hours
+  let songbird_resp = await fetch("https://songbird-explorer.flare.network/api?module=account&action=eth_get_balance&address="+address+"&block="+String(current_block-43200));
   songbird_resp = await songbird_resp.json();
   if (!songbird_resp.error) {
     let songbird_snapshot = Number(ethers.utils.formatEther(songbird_resp.result));
@@ -44,9 +44,9 @@ async function aged_enough(address, holding_requirement) {
   if (wrapped_songbird_resp.result) {
     wrapped_songbird_resp = wrapped_songbird_resp.result;
     //timestamp attribute can also be used but whatever
-    //get token transfers within the hour and see if the (balance)-(total received)=(balance one hour ago) is above the holding req or not
+    //get token transfers within the hour and see if the (balance)-(total received)=(balance 24 hours ago) is above the holding req or not
     wrapped_songbird_resp = wrapped_songbird_resp.filter(function(item) {
-      return item.tokenName === "Wrapped Songbird" && item.blockNumber >= current_block-1800;
+      return item.tokenName === "Wrapped Songbird" && item.blockNumber >= current_block-43200;
     });
     let wrapped_songbird_snapshot = 0;
     for (let i=0; i < wrapped_songbird_resp.length; i++) {
