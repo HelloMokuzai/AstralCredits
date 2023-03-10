@@ -2,6 +2,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const nunjucks = require('nunjucks');
 const axios = require('axios');
+const fs = require('fs');
 
 const db = require('./db.js');
 const songbird = require('./songbird.js');
@@ -22,7 +23,7 @@ const HOLDING_REQUIREMENT = 2000;
 const MAX_CLAIMS_PER_MONTH = 11111;
 
 //make sure all lowercase addresses
-const blacklist = [];
+const blacklist = fs.readFileSync("blacklist.txt", "utf-8").split("\n").map((item) => item.toLowerCase());
 
 const CAPTCHA_BASE_URL = "https://captcha.astralcredits.repl.co";
 
@@ -64,7 +65,7 @@ app.post('/', async function(req, res) {
     address = address.trim().toLowerCase();
   }
   if (blacklist.includes(address) && !error) {
-    error = "Address banned from using faucet";
+    error = "Address banned from using faucet, contact us if you think this is a mistake.";
   }
   //make sure request came from site
   if (req.get('host').toLowerCase() !== "astralcredits.xyz" && !error) {
