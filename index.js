@@ -127,7 +127,7 @@ app.post('/', async function(req, res) {
     if (!error) {
       let aged_enough = await songbird.aged_enough(address, HOLDING_REQUIREMENT);
       if (!aged_enough) {
-        error = "Need to have held at least "+String(HOLDING_REQUIREMENT)+" Songbird or Wrapped Songbird for at least 1-2 hours (1800 blocks) before claim. Try to claim again in 1-2 hours (this is an anti-botting measure, sorry!)";
+        error = "Need to have held at least "+String(HOLDING_REQUIREMENT)+" Songbird or Wrapped Songbird for at least 24 hours (43200 blocks) before claiming. Try again in 24 hours (this is an anti-botting measure, sorry!)";
       }
     }
   }
