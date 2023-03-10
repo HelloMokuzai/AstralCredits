@@ -116,12 +116,16 @@
 									<div class="col-12">
 										<input type="text" name="address" id="Address" value="" placeholder="Address: 0x..." required />
 									</div>
-									<div class="col-12" id="text-challenge">
-										<img src="{{ text_captcha.challenge_url }}" title="A text captcha" id="challenge-img"/>
-										<input type="text" name="answer" id="challenge-answer" placeholder="Text captcha answer" required />
+									
+									<div class="col-8" id="text-challenge">
+										<input type="text" name="answer" id="challenge-answer" placeholder="Captcha Answer" required />
 										<input type="hidden" name="code" value="{{ text_captcha.challenge_code }}"/>
 										<input type="hidden" name="nonce" value="{{ text_captcha.challenge_nonce }}"/>
 									</div>
+									<div class="col-4">
+										<span class="image"><img src="{{ text_captcha.challenge_url }}" title="A text captcha" id="challenge-img" width="80%" height="80%"/></span>
+									</div>
+									
 									<div class="col-12">
 										<ul class="actions">
 											<li><button class="h-captcha claim" data-sitekey="6741658e-3355-4259-93a2-daea85b20d1a" data-callback="onSubmit">Receive XAC</button></li>
