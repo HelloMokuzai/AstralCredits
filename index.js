@@ -111,7 +111,7 @@ app.post('/', async function(req, res) {
   let db_result = await db.find_claim(address);
   if (db_result && !error) {
     if (Number(db_result.last_claim)+CLAIM_FREQ > Date.now()) {
-      error = "Last claim too soon";
+      error = "Last claim too soon. Return 24 Hours after your last successful claim.";
     }
   }
   //check if too many uses this month
