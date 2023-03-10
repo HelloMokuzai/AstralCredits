@@ -104,7 +104,7 @@ app.post('/', async function(req, res) {
   //check cookies
   if (req.cookies['astral_last_claim'] && !error) {
     if (Number(req.cookies['astral_last_claim'])+CLAIM_FREQ > Date.now()) {
-      error = "Last claim too soon";
+      error = "Last claim too soon. Return 24 Hours after your last successful claim.";
     }
   }
   //check db
