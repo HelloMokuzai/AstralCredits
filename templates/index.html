@@ -117,13 +117,13 @@
 										<input type="text" name="address" id="Address" value="" placeholder="Address: 0x..." required />
 									</div>
 									
-									<div class="col-8" id="text-challenge">
+									<div class="col-6" id="text-challenge">
 										<input type="text" name="answer" id="challenge-answer" placeholder="Captcha Answer" required />
 										<input type="hidden" name="code" value="{{ text_captcha.challenge_code }}"/>
 										<input type="hidden" name="nonce" value="{{ text_captcha.challenge_nonce }}"/>
 									</div>
-									<div class="col-4">
-										<span class="image"><img src="{{ text_captcha.challenge_url }}" title="A text captcha" id="challenge-img" width="90%" height="90%"/></span>
+									<div class="col-6">
+										<span class="image"><img src="{{ text_captcha.challenge_url }}" title="A text captcha" id="challenge-img" width="95%" height="95%"/></span>
 									</div>
 									
 									<div class="col-12">
