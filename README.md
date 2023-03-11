@@ -34,4 +34,4 @@ JOIN THE COMMUNITY
 
 DISCLAIMER
 
-_Please view our [Terms of Service](https://github.com/HelloMokuzai/AstralCredits/blob/main/docs/Terms-of-Service.pdf)._
+_Please view our [Terms of Service](https://github.com/HelloMokuzai/AstralCredits/blob/main/static/docs/Terms-of-Service.pdf)._
