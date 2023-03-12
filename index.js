@@ -129,6 +129,8 @@ app.post('/', async function(req, res) {
       let aged_enough = await songbird.aged_enough(address, HOLDING_REQUIREMENT);
       if (!aged_enough) {
         error = "Need to have held at least "+String(HOLDING_REQUIREMENT)+" Songbird or Wrapped Songbird for at least 24 hours (43200 blocks) before claiming. Try again in 24 hours (this is an anti-botting measure, sorry!)";
+        //check to see if they hold the aged nft, if so then they are exempt
+        //let holds_aged_nft = await songbird.holds_aged_nfts(address);
       }
     }
   }
