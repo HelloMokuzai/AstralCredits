@@ -91,14 +91,19 @@ async function get_bal(address) {
 //check if they hold enough wrapped songbird or songbird to use the faucet
 async function enough_balance(address, holding_requirement) {
   let wrapped_bal = await wrapped_songbird_token.balanceOf(address);
-  wrapped_bal = ethers.utils.formatUnits(wrapped_bal.toString(), 18);
-  return Number(wrapped_bal) >= holding_requirement || Number(await get_bal(address)) >= holding_requirement;
+  wrapped_bal = Number(ethers.utils.formatUnits(wrapped_bal.toString(), 18));
+  let reg_bal = Number(await get_bal(address));
+  return {
+    success: wrapped_bal >= holding_requirement || reg_bal >= holding_requirement,
+    wrapped_sgb_bal: wrapped_bal,
+    sgb_bal: reg_bal
+  };
 }
 
 //how many blocks sgb/nft has to be held for. 43200 is 24 hours, since block time is 2 seconds so 43200 blocks is around 24 hours - 1800 blocks is around 1 Hour
 const HOLDING_BLOCK_TIME = 43200;
 
-async function aged_enough(address, holding_requirement) {
+async function aged_enough(address, holding_requirement, wrapped_songbird_resp, wrapped_sgb_bal) {
   let holding_enough = false;
   //get current block
   let current_block = await provider.getBlockNumber();
@@ -110,8 +115,6 @@ async function aged_enough(address, holding_requirement) {
       holding_enough = true;
     }
   }
-  let wrapped_songbird_resp = await fetch("https://songbird-explorer.flare.network/api?module=account&action=tokentx&address="+address);
-  wrapped_songbird_resp = await wrapped_songbird_resp.json();
   if (wrapped_songbird_resp.result) {
     wrapped_songbird_resp = wrapped_songbird_resp.result;
     //timestamp attribute can also be used but whatever
@@ -127,9 +130,7 @@ async function aged_enough(address, holding_requirement) {
         wrapped_songbird_snapshot -= Number(ethers.utils.formatUnits(wrapped_songbird_resp[i].value, 18));
       }
     }
-    let wrapped_bal = await wrapped_songbird_token.balanceOf(address);
-    wrapped_bal = ethers.utils.formatUnits(wrapped_bal.toString(), 18);
-    if ((wrapped_bal-wrapped_songbird_snapshot) >= holding_requirement) {
+    if ((wrapped_sgb_bal-wrapped_songbird_snapshot) >= holding_requirement) {
       holding_enough = true;
     }
   }
@@ -141,12 +142,45 @@ async function aged_enough(address, holding_requirement) {
 }
 
 //checks if user has the right nfts, and has held them for at least 
-async function holds_aged_nfts(address) {
+async function holds_aged_nfts(address, nft_resp) {
   //genesis token id: 1
   //hologram token id: 5
   let nft_balances = await astral_nft.balanceOfBatch([address, address], [1, 5]);
-  //HOLDING_BLOCK_TIME
-  //
+  let genesis_num = Number(nft_balances[0]);
+  let hologram_num = Number(nft_balances[1]);
+  if (genesis_num === 0 && hologram_num === 0) return false;
+  if (nft_resp.result) {
+    nft_resp = nft_resp.result;
+    //timestamp attribute can also be used but whatever
+    //get token transfers within the hour and see if the (balance)-(total received)=(balance 24 hours ago) is above the holding req or not
+    nft_resp = nft_resp.filter(function(item) {
+      return item.contractAddress.toLowerCase() === token_contract_address.toLowerCase() && (item.tokenID == "1" || item.tokenID == "2") && item.blockNumber >= current_block-HOLDING_BLOCK_TIME;
+    });
+    //net received genesis and hologram nfts during the period
+    let genesis_snapshot = 0;
+    let hologram_snapshot = 0;
+    for (let i=0; i < nft_resp.length; i++) {
+      if (nft_resp[i].to.toLowerCase() === address.toLowerCase()) {
+        if (nft_resp[i].tokenID == "1") {
+          genesis_snapshot += 1;
+        } else if (nft_resp[i].tokenID == "5") {
+          hologram_snapshot += 1;
+        }
+        wrapped_songbird_snapshot += Number(ethers.utils.formatUnits(nft_resp[i].value, 18));
+      } else {
+        if (nft_resp[i].tokenID == "1") {
+          genesis_snapshot -= 1;
+        } else if (nft_resp[i].tokenID == "5") {
+          hologram_snapshot -= 1;
+        }
+      }
+    }
+    if ((genesis_num-genesis_snapshot) >= 1 || (hologram_num-hologram_snapshot) >= 1) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
 
 async function faucet_dry() {

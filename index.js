@@ -3,6 +3,7 @@ const cookieParser = require('cookie-parser');
 const nunjucks = require('nunjucks');
 const axios = require('axios');
 const fs = require('fs');
+const { fetch } = require('cross-fetch');
 
 const db = require('./db.js');
 const songbird = require('./songbird.js');
@@ -51,11 +52,11 @@ app.get('/', async function(_req, res) {
 });
 
 //1678190400 is tues march 2023
-const faucet_open_date = 1678190400;
+const FAUCET_OPEN_DATE = 1678190400;
 
 app.post('/', async function(req, res) {
   let error = false;
-  if (Math.floor(Date.now()/1000) < faucet_open_date) {
+  if (Math.floor(Date.now()/1000) < FAUCET_OPEN_DATE) {
     error = "Faucet not open yet!";
   }
   let address = req.body['address'];
@@ -122,15 +123,24 @@ app.post('/', async function(req, res) {
   //see if they hold the requirement for at least 2000 songbird held
   if (!error) {
     let enough_balance = await songbird.enough_balance(address, HOLDING_REQUIREMENT);
-    if (!enough_balance) {
+    if (!enough_balance.success) {
       error = "Need to hold at least "+String(HOLDING_REQUIREMENT)+" Songbird or Wrapped Songbird to use faucet (this is an anti-botting measure, sorry!)";
     }
+    let token_tx_resp = await fetch("https://songbird-explorer.flare.network/api?module=account&action=tokentx&address="+address);
+    token_tx_resp = await token_tx_resp.json();
     if (!error) {
-      let aged_enough = await songbird.aged_enough(address, HOLDING_REQUIREMENT);
+      let aged_enough = await songbird.aged_enough(address, HOLDING_REQUIREMENT, token_tx_resp, enough_balance.wrapped_sgb_bal);
       if (!aged_enough) {
         error = "Need to have held at least "+String(HOLDING_REQUIREMENT)+" Songbird or Wrapped Songbird for at least 24 hours (43200 blocks) before claiming. Try again in 24 hours (this is an anti-botting measure, sorry!)";
-        //check to see if they hold the aged nft, if so then they are exempt
-        //let holds_aged_nft = await songbird.holds_aged_nfts(address);
+      }
+    }
+    //if error is truthy here, that means the error is either not enough sgb/wsgb error not sgb/wsgb not aged enough error
+    if (error) {
+      //check to see if they hold the aged nft, if so then they are exempt
+      let holds_aged_nft = await songbird.holds_aged_nfts(address, token_tx_resp);
+      if (holds_aged_nft) {
+        //they are exempt
+        error = false;
       }
     }
   }
