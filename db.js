@@ -1,5 +1,3 @@
-const { exec } = require("child_process");
-
 const mongo = require('./mongo.js');
 
 let ready = false;
@@ -11,13 +9,6 @@ db.then((db) => {
   claims = db.collection("claims"); 
   ready = true;
 });
-
-//kill replit container if not connected to db within 10 secds
-setTimeout(function() {
-  if (!ready) {
-    exec("kill 1");
-  }
-}, 10000);
 
 //march 2023
 const START_YEAR = 2023;
