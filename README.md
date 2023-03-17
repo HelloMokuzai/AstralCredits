@@ -8,6 +8,8 @@ Webite: https://astralcredits.xyz/
 
 Token Address: [0x61b64c643fCCd6ff34Fc58C8ddff4579A89E2723](https://songbird-explorer.flare.network/token/0x61b64c643fCCd6ff34Fc58C8ddff4579A89E2723/token-transfers)
 
+View our [Whitepaper](https://github.com/HelloMokuzai/AstralCredits/blob/main/static/docs/Whitepaper.pdf)
+
 Astral Credits will be distributed FREE to the Songbird community via a faucet with built-in deflationary mechanics.
 
 MONETARY POLICY 
@@ -17,7 +19,7 @@ MONETARY POLICY
 - Low Cost & Near Instant transaction finality - Using the Songbird PoS smart contract protocol.
 
 VISION
-- To bootstrap a completely self-sustaining ecosystem through free distribution of XAC tokens.
+- To bootstrap a completely self-sustaining ecosystem through free distribution of XAC tokens. See our [Vision Statement](https://github.com/HelloMokuzai/AstralCredits/blob/main/static/docs/Vision-Statement.pdf)
 
 DEVS
 - MKZI⚡, PRUSSIA
