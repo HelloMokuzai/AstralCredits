@@ -102,19 +102,6 @@ app.post('/', async function(req, res) {
   if (!text_captcha_success && !error) {
     error = "Failed text captcha";
   }
-  //check cookies
-  if (req.cookies['astral_last_claim'] && !error) {
-    if (Number(req.cookies['astral_last_claim'])+CLAIM_FREQ > Date.now()) {
-      error = "Last claim too soon. Return 24 Hours after your last successful claim.";
-    }
-  }
-  //check db
-  let db_result = await db.find_claim(address);
-  if (db_result && !error) {
-    if (Number(db_result.last_claim)+CLAIM_FREQ > Date.now()) {
-      error = "Last claim too soon. Return 24 Hours after your last successful claim.";
-    }
-  }
   //check if too many uses this month
   let claims_month = await db.get_claims_this_month();
   if (claims_month >= MAX_CLAIMS_PER_MONTH && !error) {
@@ -142,6 +129,19 @@ app.post('/', async function(req, res) {
         //they are exempt
         error = false;
       }
+    }
+  }
+  //check cookies
+  if (req.cookies['astral_last_claim'] && !error) {
+    if (Number(req.cookies['astral_last_claim'])+CLAIM_FREQ > Date.now()) {
+      error = "Last claim too soon. Return 24 Hours after your last successful claim.";
+    }
+  }
+  //check db
+  let db_result = await db.find_claim(address);
+  if (db_result && !error) {
+    if (Number(db_result.last_claim)+CLAIM_FREQ > Date.now()) {
+      error = "Last claim too soon. Return 24 Hours after your last successful claim.";
     }
   }
   //if success, try to send
