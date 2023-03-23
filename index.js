@@ -173,6 +173,6 @@ app.post('/', async function(req, res) {
   }));
 });
 
-app.listen(10000, '0.0.0.0', async () => {
+app.listen(10000, '0.0.0.0', () => {
   console.log(`App running on port 10000`);
 });
