@@ -173,6 +173,6 @@ app.post('/', async function(req, res) {
   }));
 });
 
-app.listen(8080, async () => {
-  console.log(`App running on port 8080`);
+app.listen(10000, '0.0.0.0', async () => {
+  console.log(`App running on port 10000`);
 });

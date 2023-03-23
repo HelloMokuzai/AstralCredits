@@ -44,7 +44,8 @@ function get_amount() {
   amount: number,
   month: number,
   claims_this_month: number,
-	claims: number
+	claims: number,
+  last_claim: number (unix timestamp)
 }
 */
 
