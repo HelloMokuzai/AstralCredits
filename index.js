@@ -150,7 +150,7 @@ app.post('/', async function(req, res) {
   if (!error) {
     let send_result = await songbird.send_token(address, amount);
     if (!send_result) {
-      error = "Failed to send";
+      error = "Failed to send, try again in a few minutes?";
     } else {
       tx = send_result.hash;
     }
