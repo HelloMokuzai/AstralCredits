@@ -296,7 +296,7 @@
 				//next month
 				function next_month_calc() {
 					let current_date = new Date();
-					let next_month = new Date(Date.UTC(current_date.getFullYear(), current_date.getMonth()+1));
+					let next_month = new Date(Date.UTC(current_date.getFullYear(), current_date.getUTCMonth()+1));
 					let seconds_until = (next_month.getTime() - current_date.getTime()) / 1000;
 					let days_until = Math.floor(seconds_until / (60 * 60 * 24));
 					document.getElementById("month-days").innerText = String(days_until);
