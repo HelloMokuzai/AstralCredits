@@ -273,8 +273,8 @@
 				//starts at month 0
 				function get_month() {
 					let date = new Date();
-					let years = date.getFullYear()-START_YEAR;
-					let months = date.getMonth()-START_MONTH;
+					let years = date.getUTCFullYear()-START_YEAR;
+					let months = date.getUTCMonth()-START_MONTH;
 					return years*12+months;
 				}
 				
@@ -296,7 +296,7 @@
 				//next month
 				function next_month_calc() {
 					let current_date = new Date();
-					let next_month = new Date(Date.UTC(current_date.getFullYear(), current_date.getUTCMonth()+1));
+					let next_month = new Date(Date.UTC(current_date.getUTCFullYear(), current_date.getUTCMonth()+1));
 					let seconds_until = (next_month.getTime() - current_date.getTime()) / 1000;
 					let days_until = Math.floor(seconds_until / (60 * 60 * 24));
 					document.getElementById("month-days").innerText = String(days_until);
@@ -315,7 +315,7 @@
 				function next_halving_calc() {
 					let current_date = new Date();
 					let months_till_halving = 6-(get_month()%6)
-					let next_halving = new Date(Date.UTC(current_date.getFullYear(), current_date.getMonth()+months_till_halving));
+					let next_halving = new Date(Date.UTC(current_date.getUTCFullYear(), current_date.getUTCMonth()+months_till_halving));
 					let seconds_until = (next_halving.getTime() - current_date.getTime()) / 1000;
 					let days_until = Math.floor(seconds_until / (60 * 60 * 24));
 					document.getElementById("halving-days").innerText = String(days_until);
