@@ -70,7 +70,7 @@ app.post('/', async function(req, res) {
     error = "Address banned from using faucet, contact us if you think this is a mistake.";
   }
   //make sure request came from site
-  if (req.get('host').toLowerCase() !== "astralcredits.xyz" && !error) {
+  if (req.get('host').toLowerCase() !== "astralcredits.xyz" && req.get('host').toLowerCase() !== "www.astralcredits.xyz" && !error) {
     error = "Request did not come from site, normal users should not see this error message. Please report this.";
   }
   //check if address is valid
