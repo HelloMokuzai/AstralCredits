@@ -25,7 +25,8 @@ const HOLDING_REQUIREMENT = 2000;
 const MAX_CLAIMS_PER_MONTH = 11111;
 
 //make sure all lowercase addresses
-const blacklist = fs.readFileSync("blacklist.txt", "utf-8").split("\n").map((item) => item.toLowerCase());
+const blacklist = fs.readFileSync("blacklist.txt", "utf-8").split("\n").map((item) => item.trim().toLowerCase());
+console.log("blacklist length", blacklist.length);
 
 const CAPTCHA_BASE_URL = "https://captcha.astralcredits.repl.co";
 
