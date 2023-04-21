@@ -98,43 +98,12 @@
 								<h2 id="astral-faucet"><rain><b>Astral Credits</b> Faucet</rain></h2>
 									<p><img src="images/AstralCreds-Animated.gif" alt="" width="20%" height="20%" /></p>
 										</header>
-											<h2>HOW TO USE</h2>
-												<p>Step 1. <a href="https://docs.flare.network/user/wallets/how-to-access-flare-network-with-metamask/" target="_blank">Add the SONGBIRD network</a> to your wallet if not natively supported.<br />
-												Step 2. <a href="#cta" class="scrolly">Add the XAC token address</a> to your wallet.<br />
-												Step 3. Enter your address below to receive your Astral Credits.<br />
-												Step 4. Return to claim your tokens again in <b>24 hours<b>!</p>
-												<p style="display: none;" id="faucet-open-countdown">Faucet Opens in:<br><span id="faucet-open-days">x</span> Days <span id="faucet-open-hours">x</span> Hours <span id="faucet-open-minutes">x</span> Minutes <span id="faucet-open-seconds">x</span> Seconds</span></p>
-							
-												{% if error %}
-												<p class="error"><error>ERROR! {{ error }}</error></p>
-												{% endif %}
-												{% if tx %}
-												<p class="payout"><success>SUCCESS! You have received </success><a href="https://songbird-explorer.flare.network/tx/{{ tx }}" target="_blank">{{ amount }}</a><success> Astral Credits!</success></p>
-												{% endif %}
-							
-							<form method="POST" action="/" id="faucet-form">
-								<div class="row gtr-uniform">
-									<div class="col-12">
-										<input type="text" name="address" id="Address" value="" placeholder="Address: 0x..." required />
-									</div>
-									
-									<div class="col-6" id="text-challenge">
-										<input type="text" name="answer" id="challenge-answer" placeholder="Captcha Answer" required />
-										<input type="hidden" name="code" value="{{ text_captcha.challenge_code }}"/>
-										<input type="hidden" name="nonce" value="{{ text_captcha.challenge_nonce }}"/>
-									</div>
-									<div class="col-6">
-										<span class="image"><img src="{{ text_captcha.challenge_url }}" title="A text captcha" id="challenge-img" width="95%" height="95%"/></span>
-									</div>
-									
-									<div class="col-12">
-										<ul class="actions">
-											<li><button class="h-captcha claim" data-sitekey="6741658e-3355-4259-93a2-daea85b20d1a" data-callback="onSubmit">Receive XAC</button></li>
-											<li><input id="faucet-reset" type="reset" value="Reset" onclick="Reset()"	/></li>
-										</ul>
-									</div>
-								</div>
-							</form>
+											<h2><b>THE FAUCET HAS </b>MOVED<b>!</b></h2>
+												<p>We have moved the faucet to our community Discord.<br>
+                                                This is to ensure that distribution remains free & fair for all participants.<br>
+												Simply join below and visit the <b>Faucet</b> channel to begin claiming!</p>
+												
+												<p><a href="https://discord.gg/AJd4YDZSqD" class="button claim" target="_blank"><i class="icon brands fa-discord"></i> Join Discord</a></p>
 
 							<h1>Distribution Info</h1>
 									<div class="table-wrapper">
