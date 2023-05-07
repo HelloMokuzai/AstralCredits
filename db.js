@@ -1,13 +1,12 @@
 const mongo = require('./mongo.js');
 
-let ready = false;
-
 let db = mongo.getDb();
 let claims;
+let linked_websites;
 db.then((db) => {
 	console.log("Connected to DB");
   claims = db.collection("claims"); 
-  ready = true;
+  linked_websites = db.collection("linked_websites")
 });
 
 //march 2023
@@ -91,10 +90,21 @@ async function add_claim(address, amount) {
   }
 }
 
+async function get_all_linked_websites() {
+  try {
+    return await (await linked_websites.find({})).toArray();
+  } catch(e) {
+    console.log(e)
+    //database not connected yet
+    return {};
+  }
+}
+
 module.exports = {
   get_month: get_month,
   get_amount: get_amount,
   get_claims_this_month: get_claims_this_month,
   find_claim: find_claim,
-  add_claim: add_claim
+  add_claim: add_claim,
+  get_all_linked_websites: get_all_linked_websites
 }
