@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Planet</title>
+    <link rel="stylesheet" href="/assets/css/pixels.css">
+    <link rel="icon" type="image/png" href="/images/pixel-planet.png">
+    <script src="/assets/js/blackbeard.js"></script>
+    <script src="https://unpkg.com/web3@1.9.0/dist/web3.min.js"></script>
+  </head>
+  <body>
+    <div id="top">
+      <div id="top-logo-container">
+        <img id="top-logo" src="/images/AstralCreds-Pixel-Planet.gif"></img>
+        <h2>Pixel Planet</h2>
+      </div>
+      <div id="connect-container">
+        <button id="connect-btn" onclick="connect()">Connect</button>
+        <a id="connected-address" href="" target="_blank"></a>
+      </div>
+    </div>
+    <div id="loading-container">
+      <h2 id="loading">Loading</h2>
+      <noscript>
+        <p>This website requires Javascript to function. Turn it on if you want to use this website :)</p>
+      </noscript>
+    </div>
+    <div id="main-grid" style="display: none;">
+      <div id="pixels">
+        <canvas id="pixels-canvas"></canvas>
+      </div>
+      <div id="side-panel">
+        <div id="sections">
+          <button id="pixel-info-btn" class="section-change section-change-selected" onclick="change_section('pixel-info')">Pixel Info</button>
+          <button id="admin-btn" class="section-change hide" onclick="change_section('admin')">Admin</button>
+          <button id="about-btn" class="section-change" onclick="change_section('about')">About</button>
+          <button id="settings-btn" class="section-change" onclick="change_section('settings')">Settings</button>
+        </div>
+        <div id="pixel-info-container" class="section-container">
+          <div id="none-selected">
+            <p>No pixel selected</p>
+          </div>
+          <div id="pixel-info" class="hide">
+            <p>Coords: <span id="coords"></span> <span aria-role="button" class="copy-link" onclick="coords_link_copy()">Copy Link</span></p>
+            <p>Current Color: <span id="current-color"></span></p>
+            <p>Painter: <span id="painter"></span></p>
+            <p>Linked URL: <a id="linked-url" target="_blank">None</a></p>
+            <p>Bought Price: <span id="bought-price"></span></p>
+            <br>
+            <label for="buy-price">Buy Price (tokens): </label>
+            <input id="buy-price" type="text" placeholder="10">
+            <br>
+            <div id="color-grid">
+              <div>
+                <button id="color-black" class="color-button" onclick="color_button('#000000')"></button>
+              </div>
+              <div>
+                <button id="color-white" class="color-button" onclick="color_button('#FFFFFF')"></button>
+              </div>
+              <div>
+                <button id="color-blue" class="color-button" onclick="color_button('#2450a4')"></button>
+              </div>
+              <div>
+                <button id="color-green" class="color-button" onclick="color_button('#00a368')"></button>
+              </div>
+              <div>
+                <button id="color-orange" class="color-button" onclick="color_button('#ffa800')"></button>
+              </div>
+              <div>
+                <button id="color-red" class="color-button" onclick="color_button('#ff4500')"></button>
+              </div>
+              <div>
+                <button id="color-light-blue" class="color-button" onclick="color_button('#3690ea')"></button>
+              </div>
+              <div>
+                <button id="color-turquoise" class="color-button" onclick="color_button('#51e9f4')"></button>
+              </div>
+              <div>
+                <button id="color-purple" class="color-button" onclick="color_button('#811e9f')"></button>
+              </div>
+              <div>
+                <button id="color-light-purple" class="color-button" onclick="color_button('#b44ac0')"></button>
+              </div>
+              <div>
+                <button id="color-pink" class="color-button" onclick="color_button('#ff99aa')"></button>
+              </div>
+              <div>
+                <button id="color-brown" class="color-button" onclick="color_button('#9c6926')"></button>
+              </div>
+              <div>
+                <button id="color-grey" class="color-button" onclick="color_button('#898d90')"></button>
+              </div>
+              <div>
+                <button id="color-light-grey" class="color-button" onclick="color_button('#d4d7d9')"></button>
+              </div>
+              <div>
+                <button id="color-yellow" class="color-button" onclick="color_button('#ffd635')"></button>
+              </div>
+              <div>
+                <button id="color-light-green" class="color-button" onclick="color_button('#7eed56')"></button>
+              </div>
+            </div>
+            <label for="new-color">New Color: </label>
+            <input id="new-color" type="text" placeholder="(255, 255, 255, 255) or #FFFFFFFF">
+            <div id="color-preview"></div>
+            <div id="paused-notice" class="hide">
+              <br>
+              <span>The contract is currently paused!</span>
+            </div>
+            <br>
+            <div id="pixel-btn-container">
+              <button id="approve-btn" onclick="approve()" disabled>Approve Spending (Unconnected)</button>
+              <button id="buy-btn" disabled>Buy Pixel (Unconnected)</button>
+            </div>
+          </div>
+        </div>
+        <div id="admin-container" class="hide section-container">
+          <label for="clear-coords">Coords: </label>
+          <input id="clear-coords" type="text" placeholder="(x, y)">
+          <button id="clear-btn" onclick="clear_pixel()">Clear Pixel</button>
+          <br>
+          <button onclick="refresh_paused()">Update Paused Status</button>
+          <br>
+          <button id="pause" onclick="pause()" disabled>Pause</button>
+          <button id="unpause" onclick="unpause()" disabled>Unpause</button>
+        </div>
+        <div id="about-container" class="hide section-container">
+          <p>
+            Welcome to the Pixel Planet Dapp (decentralized app)!
+            All the tile info is stored and modified by interacting with the Pixel Planet smart contract.
+          </p>
+          <p>
+            To change the color of a tile/pixel, first click the "Connect" button and connect your wallet with the site.
+            Then, click the tile on the canvas, and enter in how many tokens you want to pay for it (min price: 1 XAC), and the colour you want the pixel to be.
+            Make sure the amount you are paying for it is higher than the current price paid for that title.
+            Click "Approve Spending" to allow the contract to spend a limited amount of your tokens (permission can be easily revoked).
+            Once that confirms, click "Buy Pixel". Once the transaction confirms, the tile will change to the colour you chose!
+          </p>
+          <p>
+            Use the WASD keys to move (go into settings to enable moving with arrow keys). On mobile, drag on the canvas to move.
+            Moving on with WASD or arrow keys can be a bit janky, sorry about that.
+          </p>
+        </div>
+        <div id="settings-container" class="hide section-container">
+          <button onclick="update_pixels()">Tile Update</button>
+          <br>
+          <button id="add-network" onclick="add_network()" disabled>Add Network</button>
+          <br>
+          <label for="toggle-borders">Borders: </label>
+          <input id="toggle-borders" type="checkbox" checked></input>
+          <br>
+          <label for="toggle-arrow">Arrow Keys to Move: </label>
+          <input id="toggle-arrow" type="checkbox"></input>
+          <br>
+          <label for="remaining-allowance">Remaining Allowance: </label>
+          <input id="remaining-allowance" type="text" placeholder="unknown" disabled>
+        </div>
+      </div>
+    </div>
+    <script src="/assets/js/pixels.js"></script>
+  </body>
+</html>
