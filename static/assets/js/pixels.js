@@ -856,10 +856,10 @@ class PixelsGrid {
       this.translateFactor[1] -= e.offsetY*(this.scaleFactor)-e.offsetY*(this.scaleFactor-scroll_change);
     }
     if (this.translateFactor[0] < 0) {
-      pixel_grid.translateFactor[0] = 0;
+      this.translateFactor[0] = 0;
     }
     if (this.translateFactor[1] < 0) {
-      pixel_grid.translateFactor[1] = 0;
+      this.translateFactor[1] = 0;
     }
     this.canvas.clear();
     this.update();
