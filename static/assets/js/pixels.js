@@ -819,8 +819,9 @@ class PixelsGrid {
   }
   click(e) {
     //see which box the click is in
-    let x = Math.floor((e.offsetX+this.translateFactor[0])/this.pixelSize);
-    let y = Math.floor((e.offsetY+this.translateFactor[1])/this.pixelSize);
+    let pixelSize = this.pixelSize*(1/this.scaleFactor);
+    let x = Math.floor((e.offsetX+this.translateFactor[0]/this.scaleFactor)/pixelSize);
+    let y = Math.floor((e.offsetY+this.translateFactor[1]/this.scaleFactor)/pixelSize);
     if (x >= this.width) return;
     if (y >= this.height) return;
     if (x === this.selected[0] && y === this.selected[1]) return;
@@ -979,11 +980,12 @@ function trans_bounds() {
   if (pixel_grid.translateFactor[1] < -20) {
     pixel_grid.translateFactor[1] = -20;
   }
-  let max_x_trans = pixel_grid.width*pixel_grid.pixelSize+20-canvas.size[0];
+  let pixelSize = pixel_grid.pixelSize*(1/pixel_grid.scaleFactor);
+  let max_x_trans = pixel_grid.width*pixelSize-10;
   if (pixel_grid.translateFactor[0] > max_x_trans) {
     pixel_grid.translateFactor[0] = max_x_trans;
   }
-  let max_y_trans = pixel_grid.height*pixel_grid.pixelSize+20-canvas.size[1];
+  let max_y_trans = pixel_grid.height*pixelSize-10;
   if (pixel_grid.translateFactor[1] > max_y_trans) {
     pixel_grid.translateFactor[1] = max_y_trans;
   }
