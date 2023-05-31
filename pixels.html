@@ -1,0 +1,196 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Pixel Planet | Powered by Astral Credits (XAC)</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	    <meta property="og:site_name" content="Pixel Planet | Powered by Astral Credits (XAC)">
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="https://astralcredits.xyz/pixels/">
+		<meta property="og:image" content="https://raw.githubusercontent.com/HelloMokuzai/AstralCredits/main/static/images/banner_pixel.jpg">
+		<meta property="og:description" content="Welcome to Pixel Planet! A DApp (Decentralized Application) Pixel Canvas powered by Astral Credits. Buy pixels using XAC, create amazing works and share them with the SONGBIRD community!"/>
+		<meta name="twitter:card" content="summary_large_image"/>
+		<meta name="twitter:title" content="Pixel Planet | Powered by Astral Credits (XAC)"/>
+		<meta name="twitter:description" content="Welcome to Pixel Planet! A DApp (Decentralized Application) Pixel Canvas powered by Astral Credits. Buy pixels using XAC, create amazing works and share them with the SONGBIRD community!"/>
+		<meta name="twitter:site" content="@AstralCredits"/>
+		<meta name="twitter:image" content="https://raw.githubusercontent.com/HelloMokuzai/AstralCredits/main/static/images/banner_pixel.jpg"/>
+		<meta name="twitter:creator" content="@HelloMokuzai"/>
+		<link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="shortcut icon" type="image/x-icon" href="favicon2.ico">
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="https://astralcredits.xyz">Pixel Planet | <b>by Astral Credits</b></a></h1>
+						<nav id="nav">
+							<ul>
+								<li class="special">
+									<a href="#menu" class="menuToggle"><span>Menu</span></a>
+									<div id="menu">
+										<ul>
+                                        	<li><button class="button fit" id="connect-btn" onclick="connect()">Connect</button></li>
+											<li><a id="connected-address" href="" target="_blank"></a></li>
+										</ul>
+                                        <label for="new-color">Color Selector: </label>
+            							<input id="new-color" type="text" placeholder="#FFFFFFFF">
+                                        <div id="color-preview"></div>
+                                        <br>
+                                        
+                                        <div id="color-grid">
+											<div><button id="color-white" class="color-button" onclick="color_button('#FFFFFF')"></button></div>
+											<div><button id="color-light-grey" class="color-button" onclick="color_button('#E4E4E4')"></button></div>
+											<div><button id="color-grey" class="color-button" onclick="color_button('#888888')"></button></div>
+											<div><button id="color-black" class="color-button" onclick="color_button('#222222')"></button></div>
+                                            <div><button id="color-pink" class="color-button" onclick="color_button('#FFA7D1')"></button></div>
+                                            <div><button id="color-red" class="color-button" onclick="color_button('#E50000')"></button></div>
+                                            <div><button id="color-orange" class="color-button" onclick="color_button('#E59500')"></button></div>
+                                            <div><button id="color-brown" class="color-button" onclick="color_button('#A06A42')"></button></div>
+                                            <div><button id="color-yellow" class="color-button" onclick="color_button('#E5D900')"></button></div>
+                                            <div><button id="color-light-green" class="color-button" onclick="color_button('#94E044')"></button></div>
+                                            <div><button id="color-green" class="color-button" onclick="color_button('#02BE01')"></button></div>
+                                            <div><button id="color-turquoise" class="color-button" onclick="color_button('#00D3DD')"></button></div>
+                                            <div><button id="color-light-blue" class="color-button" onclick="color_button('#0083C7')"></button></div>
+											<div><button id="color-blue" class="color-button" onclick="color_button('#0000EA')"></button></div>
+											<div><button id="color-light-purple" class="color-button" onclick="color_button('#CF6EE4')"></button></div>
+											<div><button id="color-purple" class="color-button" onclick="color_button('#820080')"></button></div>
+										</div>
+                                        
+            							<label for="buy-price">Buy Price (XAC): </label>
+            							<input id="buy-price" type="text" placeholder="10">
+            							<br>
+                                        <ul>
+                                        	<li><button class="button fit disabled" id="approve-btn" onclick="approve()" disabled>Approve Spend</button></li>
+											<li><button class="button primary fit disabled" id="buy-btn" disabled><i class="icon solid fa-shopping-cart"></i> Buy Pixel</button></li>
+										</ul>
+          								<label for="remaining-allowance">Remaining Spend: </label>
+          								<input id="remaining-allowance" type="text" placeholder="0 XAC" disabled>
+									</div>
+								</li>
+							</ul>
+						</nav>
+					</header>
+                
+
+				<!-- Main -->
+					<article id="main">
+						<section class="wrapper style5">
+							<div class="inner">
+                            
+                            <!-- Canvas -->
+                            	<!--
+                            	<div id="loading-container">
+      								<h2 id="loading">Loading</h2>
+                                </div>
+                                
+                                <div id="main-grid" style="display: none;">
+      								<div id="pixels">
+        								<canvas id="pixels-canvas"></canvas>
+     								</div>
+                                -->
+                             
+                             <!-- Selection Pane -->       
+                            	<div id="side-panel">
+        							<div id="sections">
+          							<button id="pixel-info-btn" class="button section-change section-change-selected" onclick="change_section('pixel-info')">Info</button>
+          							<button id="admin-btn" class="button section-change hide" onclick="change_section('admin')">Admin</button>
+                                    <button id="settings-btn" class="button section-change" onclick="change_section('settings')">Settings</button>
+          							<button id="about-btn" class="button section-change" onclick="change_section('about')">About</button>
+        							
+                            
+                            		<!-- Info -->        
+									<div id="pixel-info-container" class="section-container">
+                                            <div id="paused-notice" class="hide">
+              									<p><span><b>THE CONTRACT IS CURRENTLY PAUSED</b></span></p>
+            								</div>
+                                            
+                                            <div id="none-selected">
+            									<p><b>NO PIXEL SELECTED</b></p>
+          									</div>
+          								<div id="pixel-info" class="hide">
+                                        	<ul class="alt">
+												<li><b>Selected Coords:</b> <span id="coords"></span> <span aria-role="button" class="copy-link" onclick="coords_link_copy()">Copy Link</span></li>
+												<li><b>Current Color:</b> <span id="current-color"></span></li>
+												<li><b>Painter:</b> <span id="painter"></span></li>
+                                                <li><b>Linked URL:</b> <a id="linked-url" target="_blank">None</a></li>
+                                                <li><b>Last Price:</b> <span id="bought-price"></span> $XAC</li>
+											</ul>
+                                        </div>
+                                	</div>
+                                    
+                            		<!-- Admin -->    
+                            		<div id="admin-container" class="hide section-container">
+          								<p><label for="clear-coords">Clear Selected Pixel (Coords): </label><input id="clear-coords" type="text" placeholder="(x, y)">
+                                        <br><button class="button primary" id="clear-btn" onclick="clear_pixel()"><i class="icon solid fa-times-circle"></i> Clear Pixel</button></p>
+          								<p><button class="button disabled" id="unpause" onclick="unpause()"><i class="icon solid fa-play-circle"></i> Start Contract</button> <button class="primary disabled" id="pause" onclick="pause()"><i class="icon solid fa-pause-circle"></i> Pause Contract</button></p>
+                                        <p><button onclick="refresh_paused()"><i class="icon solid fa-sync"></i> Update Paused Status</button></p>
+        							</div>
+                                    
+                                    <!-- Setting -->  
+                                        <div id="settings-container" class="hide section-container">
+                                        	<p><input type="checkbox" id="toggle-borders" name="toggle-borders" checked></input><label for="toggle-borders">Toggle Borders</label></p>
+                                           	<p><input type="checkbox" id="toggle-arrow" name="toggle-arrow"></input><label for="toggle-arrow">Arrow Keys to Move (BETA)</label></p>
+          									<p><button onclick="update_pixels()"><i class="icon solid fa-sync"></i> Update Tiles</button></p>
+          									<p><button class="button claim disabled" id="add-network" onclick="add_network()"><i class="icon solid fa-plus-circle"></i> Add Network</button></p>
+        								</div>
+							
+                            		<!-- How To: -->
+                                    <div id="about-container" class="hide section-container">
+										<h3>Pixel Planet - Powered by Astral Credits</h3>
+										<p>Welcome to Pixel Planet! A DApp (Decentralized Application) Pixel Canvas powered by Astral Credits. Buy pixels using XAC, create amazing works and share them with the SONGBIRD community! All tile information is stored and modified by interacting with the Pixel Planet tile smart contract.</p>
+                                		<h4>Instructions:</h4>
+                                		<ol>
+											<li>Click the "Connect" button to connect your wallet to the Pixel Planet application.</li>
+											<li>Select any tile on the canvas and enter in how many tokens you wish to pay for it (min price: 1 $XAC)</li>
+											<li>N.B. Ensure the amount is higher than the current price paid for that tile.</li>
+											<li>Click "Approve Spending" to allow the contract to spend a limited amount of tokens (This permission can be easily modified or revoked).</li>
+											<li>Once confirmed, click "Buy Pixel" and approve your transaction.</li>
+											<li>Once the transaction is confirmed, the tile will change to the color selected and will also display additional address and hyperlink details.</li>
+										</ol>
+                                		<b>Not yet a part of the SONGBIRD network?</b> <button class="button claim disabled" id="add-network" onclick="add_network()"><i class="icon solid fa-plus-circle"></i> Add Network</button>
+									</div>
+      							</div>
+                                
+                            </div>
+						</section>
+					</article>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<ul class="icons">
+							<li><a href="https://twitter.com/AstralCredits" class="icon brands fa-twitter" target="_blank"><span class="label">Twitter</span></a></li>
+							<li><a href="https://discord.gg/AJd4YDZSqD" class="icon brands fa-discord" target="_blank"><span class="label">Discord</span></a></li>
+							<li><a href="https://github.com/HelloMokuzai/AstralCredits" class="icon brands fa-github" target="_blank"><span class="label">Github</span></a></li>
+							<li><a href="mailto:astralcredits@outlook.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; Astral Credits 2023</li>
+							<li>MKZI Design Labs</li>
+							<li><a href="docs/Terms-of-Service.pdf" target="_blank">Terms of Service</a></li>
+						</ul>
+						<div>
+							❤️ Pixel Planet? <a href="https://prussia.dev/sample" target="_blank">Prussia's Web Services</a> can build one for you!
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+		   	<script src="https://unpkg.com/web3@1.9.0/dist/web3.min.js"></script>
+			<script src="/assets/js/blackbeard.js"></script>
+            <script src="/assets/js/pixels.js"></script>
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
