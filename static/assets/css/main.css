@@ -2523,7 +2523,7 @@ input, select, textarea {
 				background-color: #eb341c !important;
 			}
 
-	input[type="submit"].claim,
+		input[type="submit"].claim,
 		input[type="reset"].claim,
 		input[type="button"].claim,
 		button.claim,
@@ -3925,6 +3925,144 @@ input, select, textarea {
 		background-attachment: scroll;
 	}
 
+/* Pixel Planet CSS */
+
+	@keyframes loading {
+  		0% {
+    	content: "";
+  	}
+  	33% {
+    	content: ".";
+  	}
+  	66% {
+    	content: "..";
+  	}
+  	100% {
+    	content: "...";
+  	}
+}
+
+	#loading:after {
+  		animation-name: loading;
+  		animation-duration: 1.5s;
+  		animation-iteration-count: infinite;
+  		animation-direction: alternate;
+  		content: "";
+	}
+	 
+	.hide {
+  	display: none;
+	}
+	
+	.section-container {
+  		border: 2px solid lightgrey;
+		border-top-left-radius: 4px;
+  		border-top-right-radius: 4px;
+  		border-bottom-left-radius: 4px;
+  		border-bottom-right-radius: 4px;
+  		padding-left: 12px;
+  		padding-right: 12px;
+  		padding-top: 12px;
+		padding-bottom: 12px;
+		margin-top: 6px;
+ 		height: 100%;
+  		height: calc(100% - 6px - 2em);
+	}
+
+	.section-container p {
+  		word-break: break-word;
+	}
+
+	.section-container p:first-of-type {
+  		margin-top: 0;
+	}
+	
+	/* Color Palette */
+		
+	#color-grid {
+  				display: grid;
+ 				grid-template-columns: auto auto;
+  				column-gap: 2px;
+  				row-gap: 2px;
+  				padding-bottom: 12px;
+				}
+
+	.color-button {
+  				width: 100%;
+  				height: 100%;
+				}
+
+	#color-white {
+  				background-color: #FFFFFF;
+				}
+				
+	#color-light-grey {
+  				background-color: #E4E4E4;
+				}
+				
+	#color-grey {
+  				background-color: #888888;
+				}
+
+	#color-black {
+  				background-color: #222222;
+				}
+				
+	#color-pink {
+  				background-color: #FFA7D1;
+				}
+				
+	#color-red {
+  				background-color: #E50000;
+				}
+
+	#color-orange {
+  				background-color: #E59500;
+				}
+
+	#color-brown {
+  				background-color: #A06A42;
+				}
+
+	#color-yellow {
+  				background-color: #E5D900;
+				}
+
+	#color-light-green {
+  				background-color: #94E044;
+				}
+
+	#color-green {
+  				background-color: #02BE01;
+				}
+
+	#color-turquoise {
+  				background-color: #00D3DD;
+				}
+
+	#color-light-blue {
+  				background-color: #0083C7;
+				}
+				
+	#color-blue {
+  				background-color: #0000EA;
+				}
+
+	#color-light-purple {
+  				background-color: #CF6EE4;
+				}
+
+	#color-purple {
+  				background-color: #820080;
+				}
+
+	#color-preview {
+  				height: 13px;
+  				width: 13px;;
+ 				display: inline-block;
+  				vertical-align: middle;
+				}
+	
 /* Footer */
 
 	#footer {
