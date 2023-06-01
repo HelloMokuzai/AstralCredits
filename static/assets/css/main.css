@@ -2853,9 +2853,25 @@ input, select, textarea {
 
 			}
 
-		.wrapper.alt {
-			padding: 0;
+			.wrapper.alt {
+			padding: 0 0 2em 0 ;
 		}
+		
+			@media screen and (max-width: 1280px) {
+
+				.wrapper > .alt {
+					width: 90%;
+				}
+
+			}
+
+			@media screen and (max-width: 980px) {
+
+				.wrapper > .alt {
+					width: 100%;
+				}
+
+			}
 
 		.wrapper.style1 {
 			background-color: #21b2a6;
