@@ -4059,12 +4059,11 @@ input, select, textarea {
 	#color-preview {
   				border-radius: 2px;
 				border: 0;
-  				height: 3.125em;
+  				height: 2.5em;
   				width: 100%;
  				display: inline-block;
   				vertical-align: middle;
-				padding-top: 2px;
-				padding-bottom: 6px;
+				padding: 2px 0 6px 0;
 				}
 	
 /* Footer */
