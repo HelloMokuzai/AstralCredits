@@ -2178,6 +2178,8 @@ input, select, textarea {
 			ul.alt li {
 				border-top: solid 1px #fff;
 				padding: 0.5em 0;
+				word-wrap: break-word;
+        			display: inline-block;
 			}
 
 				ul.alt li:first-child {
