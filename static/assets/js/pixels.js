@@ -584,6 +584,7 @@ function connect_actions() {
   document.getElementById("approve-btn").classList.remove("disabled");
   document.getElementById("approve-btn").innerText = "Approve Spending";
   document.getElementById("add-network").disabled = false;
+  document.getElementById("add-network").classList.remove("disabled");
   connected = true;
 }
 
@@ -1011,7 +1012,7 @@ function change_section(new_section) {
 }
 
 function coords_link_copy() {
-  navigator.clipboard.writeText("https://"+location.host+"/?x_pos="+String(pixel_grid.selected[0])+"&y_pos="+String(pixel_grid.selected[1]));
+  navigator.clipboard.writeText("https://"+location.host+location.pathname+"?x_pos="+String(pixel_grid.selected[0])+"&y_pos="+String(pixel_grid.selected[1]));
 }
 
 document.addEventListener("pixelclick", (e) => {
