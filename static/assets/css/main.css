@@ -2178,7 +2178,9 @@ input, select, textarea {
 			ul.alt li {
 				border-top: solid 1px #fff;
 				padding: 0.5em 0;
-				word-wrap: break-word;
+				overflow-wrap: break-word;
+  				word-wrap: break-word;
+  				white-space: normal !important;
 			}
 
 				ul.alt li:first-child {
