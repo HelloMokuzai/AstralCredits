@@ -41,38 +41,37 @@
 									<a href="#menu" class="menuToggle"><span>Menu</span></a>
 									<div id="menu">
 										<ul>
-																					<li><button class="button fit" id="connect-btn" onclick="connect()">Connect</button></li>
+											<li><button class="button fit" id="connect-btn" onclick="connect()">Connect</button></li>
 											<li><a id="connected-address" href="" target="_blank"></a></li>
 										</ul>
-																				<label for="new-color">Color Selector: </label>
-													<input id="new-color" type="text" placeholder="#FFFFFFFF">
-																				<div id="color-preview"></div>
-																				<br>
+											<label for="new-color">Color Selector: </label>
+											<input id="new-color" type="text" placeholder="#FFFFFFFF">
+											<p><div id="color-preview"></div></p>
 																				
-																				<div id="color-grid">
+											<p><div id="color-grid">
 											<div><button id="color-white" class="color-button" onclick="color_button('#FFFFFF')"></button></div>
 											<div><button id="color-light-grey" class="color-button" onclick="color_button('#E4E4E4')"></button></div>
 											<div><button id="color-grey" class="color-button" onclick="color_button('#888888')"></button></div>
 											<div><button id="color-black" class="color-button" onclick="color_button('#222222')"></button></div>
-																						<div><button id="color-pink" class="color-button" onclick="color_button('#FFA7D1')"></button></div>
-																						<div><button id="color-red" class="color-button" onclick="color_button('#E50000')"></button></div>
-																						<div><button id="color-orange" class="color-button" onclick="color_button('#E59500')"></button></div>
-																						<div><button id="color-brown" class="color-button" onclick="color_button('#A06A42')"></button></div>
-																						<div><button id="color-yellow" class="color-button" onclick="color_button('#E5D900')"></button></div>
-																						<div><button id="color-light-green" class="color-button" onclick="color_button('#94E044')"></button></div>
-																						<div><button id="color-green" class="color-button" onclick="color_button('#02BE01')"></button></div>
-																						<div><button id="color-turquoise" class="color-button" onclick="color_button('#00D3DD')"></button></div>
-																						<div><button id="color-light-blue" class="color-button" onclick="color_button('#0083C7')"></button></div>
+											<div><button id="color-pink" class="color-button" onclick="color_button('#FFA7D1')"></button></div>
+											<div><button id="color-red" class="color-button" onclick="color_button('#E50000')"></button></div>
+											<div><button id="color-orange" class="color-button" onclick="color_button('#E59500')"></button></div>
+											<div><button id="color-brown" class="color-button" onclick="color_button('#A06A42')"></button></div>
+											<div><button id="color-yellow" class="color-button" onclick="color_button('#E5D900')"></button></div>
+											<div><button id="color-light-green" class="color-button" onclick="color_button('#94E044')"></button></div>
+											<div><button id="color-green" class="color-button" onclick="color_button('#02BE01')"></button></div>
+											<div><button id="color-turquoise" class="color-button" onclick="color_button('#00D3DD')"></button></div>
+											<div><button id="color-light-blue" class="color-button" onclick="color_button('#0083C7')"></button></div>
 											<div><button id="color-blue" class="color-button" onclick="color_button('#0000EA')"></button></div>
 											<div><button id="color-light-purple" class="color-button" onclick="color_button('#CF6EE4')"></button></div>
 											<div><button id="color-purple" class="color-button" onclick="color_button('#820080')"></button></div>
-										</div>
+											</div></p>
 																				
-													<label for="buy-price">Buy Price (XAC): </label>
-													<input id="buy-price" type="text" placeholder="10" onclick="buy()">
-													<br>
-																				<ul>
-																					<li><button class="button fit disabled" id="approve-btn" onclick="approve()" disabled>Approve Spend</button></li>
+											<label for="buy-price">Buy Price (XAC): </label>
+											<input id="buy-price" type="text" placeholder="10" onclick="buy()">
+											<br>
+										<ul>
+											<li><button class="button fit disabled" id="approve-btn" onclick="approve()" disabled>Approve Spend</button></li>
 											<li><button class="button primary fit disabled" id="buy-btn" disabled><i class="icon solid fa-shopping-cart"></i> Buy Pixel</button></li>
 										</ul>
 													<label for="remaining-allowance">Remaining Spend: </label>
