@@ -578,8 +578,10 @@ function connect_actions() {
   document.getElementById("connect-btn").innerText = "Connected";
   document.getElementById("connect-btn").disabled = true;
   document.getElementById("buy-btn").disabled = false;
+  document.getElementById("buy-btn").classList.remove("disabled");
   document.getElementById("buy-btn").innerText = "Buy Pixel";
   document.getElementById("approve-btn").disabled = false;
+  document.getElementById("approve-btn").classList.remove("disabled");
   document.getElementById("approve-btn").innerText = "Approve Spending";
   document.getElementById("add-network").disabled = false;
   connected = true;
@@ -692,12 +694,18 @@ function parse_new_color() {
 }
 
 async function buy(x, y, prev_price) {
+  //shouldnt happen
+  if (!x || !y) return;
   if (!connected) return;
+  //make sure there is buy price
   let buy_price = get_buy_price();
   if (!buy_price) return;
   //parse color
   let new_color = parse_new_color();
-  if (!new_color) return;
+  if (!new_color) {
+    alert("No color selected!");
+    return;
+  };
   //make sure buy price is greater than old buy price, otherwise transaction will fail
   if (prev_price >= buy_price) {
     alert("Your buy price is lower than the required price to overwrite the pixel colour!");
@@ -880,6 +888,11 @@ async function update_pixels() {
   pixel_grid.pixels = await get_pixels();
   canvas.update();
   refresh_paused();
+  //also update allowance
+  token_contract.methods.allowance(connected_account, TILES_CONTRACT_ADDRESS).call().then((remaining_allowance) => {
+    console.log(remaining_allowance)
+    document.getElementById("remaining-allowance").value = String(Math.floor(remaining_allowance*10**-TOKEN_DECIMALS))+" "+TOKEN_NAME;
+  });
 }
 
 async function draw_pixel_grid() {
@@ -917,8 +930,64 @@ async function draw_pixel_grid() {
   canvas.update();
   //check paused
   refresh_paused();
+  //update allowance
+  token_contract.methods.allowance(connected_account, TILES_CONTRACT_ADDRESS).call().then((remaining_allowance) => {
+    console.log(remaining_allowance)
+    document.getElementById("remaining-allowance").value = String(Math.floor(remaining_allowance*10**-TOKEN_DECIMALS))+" "+TOKEN_NAME;
+  });
   //update pixels every minute or so
   setInterval(update_pixels, 60*1000);
+  //drag to move
+  let current_drag;
+
+  //mousedown must start in canvas
+  canvas.canvas.addEventListener("mousedown", (e) => {
+    current_touch = {
+      original_coords: [e.clientX, e.clientY],
+      original_translate: pixel_grid.translateFactor,
+    };
+  });
+  
+  document.addEventListener("mousemove", (e) => {
+    if (current_touch) {
+      pixel_grid.translateFactor = [
+        current_touch.original_translate[0]+(current_touch.original_coords[0]-e.clientX),
+        current_touch.original_translate[1]+(current_touch.original_coords[1]-e.clientY)
+      ];
+      trans_bounds();
+      canvas.update();
+    }
+  });
+
+  document.addEventListener("mouseup", (e) => {
+    current_touch = undefined;
+  });
+
+  //touch drag to move
+  let current_touch;
+
+  //touch must start in canvas
+  canvas.canvas.addEventListener("touchstart", function(e) {
+    current_touch = {
+      original_touch: [e.touches[0].clientX, e.touches[0].clientY],
+      original_translate: pixel_grid.translateFactor,
+    }
+  });
+
+  document.addEventListener("touchmove", function(e) {
+    if (current_touch) {
+      pixel_grid.translateFactor = [
+        current_touch.original_translate[0]+(current_touch.original_touch[0]-e.touches[0].clientX),
+        current_touch.original_translate[1]+(current_touch.original_touch[1]-e.touches[0].clientY)
+      ];
+      trans_bounds();
+      canvas.update();
+    }
+  });
+
+  document.addEventListener("touchend", function(e) {
+    current_touch = undefined;
+  });
 }
 
 draw_pixel_grid();
@@ -935,7 +1004,7 @@ function change_section(new_section) {
   if (new_section === "settings") {
     token_contract.methods.allowance(connected_account, TILES_CONTRACT_ADDRESS).call().then((remaining_allowance) => {
       console.log(remaining_allowance)
-      document.getElementById("remaining-allowance").value = String(remaining_allowance*10**-TOKEN_DECIMALS)+" "+TOKEN_NAME;
+      document.getElementById("remaining-allowance").value = String(Math.floor(remaining_allowance*10**-TOKEN_DECIMALS))+" "+TOKEN_NAME;
     });
   }
   //
@@ -951,6 +1020,11 @@ document.addEventListener("pixelclick", (e) => {
   document.getElementById("none-selected").classList.add("hide");
   document.getElementById("pixel-info").classList.remove("hide");
   document.getElementById("painter").innerText = pixel.painter;
+  if (pixel.painter === "0x0000000000000000000000000000000000000000") {
+    document.getElementById("painter").innerText = "No one... yet.";
+  } else {
+    document.getElementById("painter").innerText = pixel.painter;
+  }
   let linked = all_linked.find(function(item) {
     return item.address === pixel.painter.toLowerCase();
   });
@@ -963,7 +1037,7 @@ document.addEventListener("pixelclick", (e) => {
   //format the coords
   document.getElementById("coords").innerText = "("+coords.join(", ")+")";
   //format the paid amount
-  document.getElementById("bought-price").innerText = String(pixel.paid_amount*(10**-TOKEN_DECIMALS))+" "+TOKEN_NAME;
+  document.getElementById("bought-price").innerText = String(pixel.paid_amount*(10**-TOKEN_DECIMALS))+" $"+TOKEN_NAME;
   //format the color
   document.getElementById("current-color").innerText = "("+u32_to_color(pixel.color).join(", ")+")";
   document.getElementById("buy-btn").onclick = function() {
@@ -980,12 +1054,35 @@ function trans_bounds() {
   if (pixel_grid.translateFactor[1] < -20) {
     pixel_grid.translateFactor[1] = -20;
   }
+  //doesn't seem to work for whatever reason
   let pixelSize = pixel_grid.pixelSize*(1/pixel_grid.scaleFactor);
   let max_x_trans = pixel_grid.width*pixelSize-10;
+  if (pixel_grid.scaleFactor > 2) {
+    max_x_trans += 900;
+  } else if (pixel_grid.scaleFactor > 1.75) {
+    max_x_trans += 800;
+  } else if (pixel_grid.scaleFactor > 1.5) {
+    max_x_trans += 600;
+  } else if (pixel_grid.scaleFactor > 1.25) {
+    max_x_trans += 500;
+  } else if (pixel_grid.scaleFactor > 1) {
+    max_x_trans += 420;
+  }
   if (pixel_grid.translateFactor[0] > max_x_trans) {
     pixel_grid.translateFactor[0] = max_x_trans;
   }
   let max_y_trans = pixel_grid.height*pixelSize-10;
+  if (pixel_grid.scaleFactor > 2) {
+    max_y_trans += 900;
+  } else if (pixel_grid.scaleFactor > 1.75) {
+    max_y_trans += 800;
+  } else if (pixel_grid.scaleFactor > 1.5) {
+    max_y_trans += 600;
+  } else if (pixel_grid.scaleFactor > 1.25) {
+    max_y_trans += 500;
+  } else if (pixel_grid.scaleFactor > 1) {
+    max_y_trans += 420;
+  }
   if (pixel_grid.translateFactor[1] > max_y_trans) {
     pixel_grid.translateFactor[1] = max_y_trans;
   }
@@ -1078,7 +1175,7 @@ document.getElementById("toggle-borders").addEventListener("change", function(_e
   canvas.update();
 });
 
-document.getElementById("top-logo").addEventListener("click", function (_e) {
+document.getElementById("top-logo")?.addEventListener("click", function (_e) {
   //set plonk animation
   document.getElementById("top-logo").animate([
     {
@@ -1093,30 +1190,6 @@ document.getElementById("top-logo").addEventListener("click", function (_e) {
   ], {
     duration: 140
   });
-});
-
-let current_touch;
-
-document.addEventListener("touchstart", function(e) {
-  current_touch = {
-    original_touch: [e.touches[0].clientX, e.touches[0].clientY],
-    original_translate: pixel_grid.translateFactor,
-  }
-});
-
-document.addEventListener("touchmove", function(e) {
-  if (current_touch) {
-    pixel_grid.translateFactor = [
-      current_touch.original_translate[0]+(current_touch.original_touch[0]-e.touches[0].clientX),
-      current_touch.original_translate[1]+(current_touch.original_touch[1]-e.touches[0].clientY)
-    ];
-    trans_bounds();
-    canvas.update();
-  }
-});
-
-document.addEventListener("touchend", function(e) {
-  current_touch = undefined;
 });
 
 window.addEventListener("resize", function(_e) {
