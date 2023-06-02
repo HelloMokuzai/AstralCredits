@@ -3949,6 +3949,11 @@ input, select, textarea {
   		animation-direction: alternate;
   		content: "";
 	}
+
+	#pixels {
+  		height: 90vh;
+  		width: 100%;
+	}
 	 
 	.hide {
   	display: none;
