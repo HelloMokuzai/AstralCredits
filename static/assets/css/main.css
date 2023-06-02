@@ -3950,24 +3950,13 @@ input, select, textarea {
   		content: "";
 		text-align: center;
 	}
-
-	#pixels {
-  		height: 90vh;
- 		 width: 100%;
-		}
-
-	#main-grid {
-  		display: grid;
-  		grid-gap: 1vw;
-  		grid-template-columns: 69vw 28vw;
-		}
 	 
 	.hide {
   	display: none;
 	}
 	
 	.section-container {
-  		border: 2px solid dimgrey;
+  		border: 2px solid lightgrey;
 		border-top-left-radius: 3px;
   		border-top-right-radius: 3px;
   		border-bottom-left-radius: 3px;
