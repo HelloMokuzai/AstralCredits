@@ -966,7 +966,7 @@ async function draw_pixel_grid() {
   let current_touch;
 
   //touch must start in canvas
-  canvas.canvas.addEventListener("touchstart", function(e) {
+  document.addEventListener("touchstart", function(e) {
     current_touch = {
       original_touch: [e.touches[0].clientX, e.touches[0].clientY],
       original_translate: pixel_grid.translateFactor,
