@@ -579,10 +579,8 @@ function connect_actions() {
   document.getElementById("connect-btn").disabled = true;
   document.getElementById("buy-btn").disabled = false;
   document.getElementById("buy-btn").classList.remove("disabled");
-  document.getElementById("buy-btn").innerText = "Buy Pixel";
   document.getElementById("approve-btn").disabled = false;
   document.getElementById("approve-btn").classList.remove("disabled");
-  document.getElementById("approve-btn").innerText = "Approve Spending";
   document.getElementById("add-network").disabled = false;
   document.getElementById("add-network").classList.remove("disabled");
   connected = true;
