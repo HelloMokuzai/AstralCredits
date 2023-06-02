@@ -2832,6 +2832,10 @@ input, select, textarea {
 		padding: 6em 0 4em 0 ;
 	}
 
+		.wrapper-canvas {
+		padding: 1em 1em 1em 1em ;
+	}
+
 		.wrapper > .inner {
 			width: 60em;
 			margin: 0 auto;
