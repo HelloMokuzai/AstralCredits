@@ -3948,6 +3948,7 @@ input, select, textarea {
   		animation-iteration-count: infinite;
   		animation-direction: alternate;
   		content: "";
+		text-align: center;
 	}
 
 	#pixels {
