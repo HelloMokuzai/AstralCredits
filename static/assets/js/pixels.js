@@ -961,32 +961,6 @@ async function draw_pixel_grid() {
   document.addEventListener("mouseup", (e) => {
     current_touch = undefined;
   });
-
-  //touch drag to move
-  let current_touch;
-
-  //touch must start in canvas
-  document.addEventListener("touchstart", function(e) {
-    current_touch = {
-      original_touch: [e.touches[0].clientX, e.touches[0].clientY],
-      original_translate: pixel_grid.translateFactor,
-    }
-  });
-
-  document.addEventListener("touchmove", function(e) {
-    if (current_touch) {
-      pixel_grid.translateFactor = [
-        current_touch.original_translate[0]+(current_touch.original_touch[0]-e.touches[0].clientX),
-        current_touch.original_translate[1]+(current_touch.original_touch[1]-e.touches[0].clientY)
-      ];
-      trans_bounds();
-      canvas.update();
-    }
-  });
-
-  document.addEventListener("touchend", function(e) {
-    current_touch = undefined;
-  });
 }
 
 draw_pixel_grid();
@@ -1198,4 +1172,30 @@ window.addEventListener("resize", function(_e) {
     canvas.canvas.height = canvas.size[1];
     canvas.update();
   }
+});
+
+//touch drag to move
+let current_touch;
+
+//touch must start in canvas
+document.addEventListener("touchstart", function(e) {
+  current_touch = {
+    original_touch: [e.touches[0].clientX, e.touches[0].clientY],
+    original_translate: pixel_grid.translateFactor,
+  }
+});
+
+document.addEventListener("touchmove", function(e) {
+  if (current_touch) {
+    pixel_grid.translateFactor = [
+      current_touch.original_translate[0]+(current_touch.original_touch[0]-e.touches[0].clientX),
+      current_touch.original_translate[1]+(current_touch.original_touch[1]-e.touches[0].clientY)
+    ];
+    trans_bounds();
+    canvas.update();
+  }
+});
+
+document.addEventListener("touchend", function(e) {
+  current_touch = undefined;
 });
