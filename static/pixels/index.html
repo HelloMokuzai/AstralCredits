@@ -140,13 +140,15 @@
 																				<p><button onclick="refresh_paused()"><i class="icon solid fa-sync"></i> Update Paused Status</button></p>
 											</div>
 																		
-																		<!-- Setting -->	
+																		<!-- Settings -->	
 																				<div id="settings-container" class="hide section-container">
-																					<p><input type="checkbox" id="toggle-borders" name="toggle-borders" checked></input><label for="toggle-borders">Toggle Borders</label></p>
-																					 	<p><input type="checkbox" id="toggle-arrow" name="toggle-arrow"></input><label for="toggle-arrow">Arrow Keys to Move (BETA)</label></p>
-														<p><button onclick="update_pixels()"><i class="icon solid fa-sync"></i> Update Tiles</button></p>
-														<p><button class="button claim disabled" id="add-network" onclick="add_network()"><i class="icon solid fa-plus-circle"></i> Add Network</button></p>
-												</div>
+																					<ul class="alt">
+																						<li><input type="checkbox" id="toggle-borders" name="toggle-borders" checked></input><label for="toggle-borders">Toggle Borders</label></li>
+																						<li><input type="checkbox" id="toggle-arrow" name="toggle-arrow"></input><label for="toggle-arrow">Arrow Keys to Move (BETA)</label></li>
+																						<li><button onclick="update_pixels()"><i class="icon solid fa-sync"></i> Update Tiles</button></li>
+                                                																<li><button class="button claim disabled" id="add-network" onclick="add_network()"><i class="icon solid fa-plus-circle"></i> Add Network</button></li>
+																					</ul>
+																				</div>
 							
 																<!-- How To: -->
 																		<div id="about-container" class="hide section-container">
