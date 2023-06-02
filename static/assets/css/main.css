@@ -4036,7 +4036,7 @@ input, select, textarea {
 		word-break: break-word;
 	}
 
-	.section-container p {
+	.section-container p ul.alt li {
   		word-break: break-word;
 	}
 
