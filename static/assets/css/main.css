@@ -2465,6 +2465,12 @@ input, select, textarea {
 			background-color: rgba(144, 144, 144, 0.5);
 		}
 
+		input[type="button"]:focus,
+		button:focus,
+		.button:focus {
+			background-color: rgba(144, 144, 144, 0.5);
+		}
+
 		input[type="submit"].icon:before,
 		input[type="reset"].icon:before,
 		input[type="button"].icon:before,
