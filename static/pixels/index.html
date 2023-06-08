@@ -94,8 +94,8 @@
 											<p>Welcome to <b>Pixel Planet</b>! Loading the shared canvas - PLEASE WAIT!</p>
 										</header>
 										<p><h3>Controls</h3></p>
-										<p><i class="icon solid fa-laptop"></i> WASD keys to move / Click-drag with the mouse on the Canvas. +/- Mouse scroll wheel to zoom.</p>
-										<p><i class="icon solid fa-mobile-alt"></i> Drag finger to move.</p>
+										<p><i class="icon solid fa-laptop"></i> - WASD keys to move / Click-drag with the mouse on the Canvas. +/- Mouse scroll wheel to zoom.</p>
+										<p><i class="icon solid fa-mobile-alt"></i> - Drag finger to move.</p>
 									</div>
 									<div id="main-grid" style="display: none;">
 									<div id="pixels">
@@ -130,7 +130,7 @@
 													<ul class="alt">
 														<li><b>Selected Coords:</b> <span id="coords"></span> <span aria-role="button" class="copy-link" onclick="coords_link_copy()">Copy Link</span></li>
 														<li><b>Current Color:</b> <span id="current-color"></span></li>
-														<li><b>Painter:</b> <span id="painter"></span></li>
+														<li><b>Creator:</b> <span id="painter"></span></li>
 														<li><b>Linked URL:</b> <a id="linked-url" target="_blank">None</a></li>
 														<li><b>Last Price:</b> <span id="bought-price"></span></li>
 													</ul>
@@ -147,11 +147,13 @@
 																		
 											<!-- Settings -->	
 											<div id="settings-container" class="hide section-container">
+												<p><i class="icon solid fa-laptop"></i> - WASD keys to move / Click-drag with the mouse on the Canvas. +/- Mouse scroll wheel to zoom.</p>
+												<p><i class="icon solid fa-mobile-alt"></i> - Drag finger to move.</p>
 												<ul class="alt">
 													<li><input type="checkbox" id="toggle-borders" name="toggle-borders" checked></input><label for="toggle-borders">Toggle Borders</label></li>
 													<li><input type="checkbox" id="toggle-arrow" name="toggle-arrow"></input><label for="toggle-arrow">Arrow Keys to Move (BETA)</label></li>
 													<li><button onclick="update_pixels()"><i class="icon solid fa-sync"></i> Update Tiles</button></li>
-                                                							<li><button class="button claim disabled" id="add-network" onclick="add_network()"><i class="icon solid fa-plus-circle"></i> Add Network</button></li>
+                                                							<li><button class="button disabled" id="add-network" onclick="add_network()"><i class="icon solid fa-plus-circle"></i> Add Network</button></li>
 												</ul>
 											</div>
 							
