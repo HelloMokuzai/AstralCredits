@@ -112,68 +112,71 @@
 									<div id="side-panel">
 										<div id="sections">
 											<ul class="actions small">
-												<li><button id="pixel-info-btn" class="button small section-change section-change-selected" onclick="change_section('pixel-info')"><i class="icon solid fa-info-circle"></i></button></li>
-												<li><button id="admin-btn" class="button small section-change hide" onclick="change_section('admin')"><i class="icon solid fa-unlock"></i></button></li>
-												<li><button id="settings-btn" class="button small section-change" onclick="change_section('settings')"><i class="icon solid fa-toggle-on"></i></button></li>
-												<li><button id="about-btn" class="button small section-change" onclick="change_section('about')"><i class="icon solid fa-question-circle"></i></button></li>
+												<li><button id="pixel-info-btn" class="button small section-change section-change-selected" onclick="change_section('pixel-info')"><i class="icon solid fa-info-circle"></i> Info</button></li>
+												<li><button id="settings-btn" class="button small section-change" onclick="change_section('settings')"><i class="icon solid fa-toggle-on"></i> Settings</button></li>
+												<li><button id="about-btn" class="button small section-change" onclick="change_section('about')"><i class="icon solid fa-question-circle"></i> About</button></li>
+												<li><button id="admin-btn" class="button small section-change hide" onclick="change_section('admin')"><i class="icon solid fa-unlock"></i> Admin</button></li>
 											</ul>
 
-																<!-- Info -->				
-									<div id="pixel-info-container" class="section-container">
-																						<div id="paused-notice" class="hide">
-																<p><span><b>THE CONTRACT IS CURRENTLY PAUSED</b></span></p>
-														</div>
+											<!-- Info -->				
+											<div id="pixel-info-container" class="section-container">
+												<div id="paused-notice" class="hide">
+													<p><span><b>THE CONTRACT IS CURRENTLY PAUSED</b></span></p>
+												</div>
 																						
-																						<div id="none-selected">
-															<p><b>NO PIXEL SELECTED</b></p>
-														</div>
-													<div id="pixel-info" class="hide">
-																					<ul class="alt">
-												<li><b>Selected Coords:</b> <span id="coords"></span> <span aria-role="button" class="copy-link" onclick="coords_link_copy()">Copy Link</span></li>
-												<li><b>Current Color:</b> <span id="current-color"></span></li>
-												<li><b>Painter:</b> <span id="painter"></span></li>
-																								<li><b>Linked URL:</b> <a id="linked-url" target="_blank">None</a></li>
-																								<li><b>Last Price:</b> <span id="bought-price"></span></li>
-											</ul>
-																				</div>
-																	</div>
-																		
-																<!-- Admin -->		
-																<div id="admin-container" class="hide section-container">
-													<p><label for="clear-coords">Clear Selected Pixel (Coords): </label><input id="clear-coords" type="text" placeholder="(x, y)">
-																				<br><button class="button primary" id="clear-btn" onclick="clear_pixel()"><i class="icon solid fa-times-circle"></i> Clear Pixel</button></p>
-													<p><button class="button disabled" id="unpause" onclick="unpause()"><i class="icon solid fa-play-circle"></i> Start Contract</button> <button class="primary disabled" id="pause" onclick="pause()"><i class="icon solid fa-pause-circle"></i> Pause Contract</button></p>
-																				<p><button onclick="refresh_paused()"><i class="icon solid fa-sync"></i> Update Paused Status</button></p>
+												<div id="none-selected">
+													<p><b>NO PIXEL SELECTED</b></p>
+												</div>
+												<div id="pixel-info" class="hide">
+													<ul class="alt">
+														<li><b>Selected Coords:</b> <span id="coords"></span> <span aria-role="button" class="copy-link" onclick="coords_link_copy()">Copy Link</span></li>
+														<li><b>Current Color:</b> <span id="current-color"></span></li>
+														<li><b>Painter:</b> <span id="painter"></span></li>
+														<li><b>Linked URL:</b> <a id="linked-url" target="_blank">None</a></li>
+														<li><b>Last Price:</b> <span id="bought-price"></span></li>
+													</ul>
+												</div>
 											</div>
 																		
-																		<!-- Settings -->	
-																				<div id="settings-container" class="hide section-container">
-																					<ul class="alt">
-																						<li><input type="checkbox" id="toggle-borders" name="toggle-borders" checked></input><label for="toggle-borders">Toggle Borders</label></li>
-																						<li><input type="checkbox" id="toggle-arrow" name="toggle-arrow"></input><label for="toggle-arrow">Arrow Keys to Move (BETA)</label></li>
-																						<li><button onclick="update_pixels()"><i class="icon solid fa-sync"></i> Update Tiles</button></li>
-                                                																<li><button class="button claim disabled" id="add-network" onclick="add_network()"><i class="icon solid fa-plus-circle"></i> Add Network</button></li>
-																					</ul>
-																				</div>
+											<!-- Admin -->		
+											<div id="admin-container" class="hide section-container">
+												<p><label for="clear-coords">Clear Selected Pixel (Coords): </label><input id="clear-coords" type="text" placeholder="(x, y)">
+												<br><button class="button primary" id="clear-btn" onclick="clear_pixel()"><i class="icon solid fa-times-circle"></i> Clear Pixel</button></p>
+												<p><button class="button disabled" id="unpause" onclick="unpause()"><i class="icon solid fa-play-circle"></i> Start Contract</button> <button class="primary disabled" id="pause" onclick="pause()"><i class="icon solid fa-pause-circle"></i> Pause Contract</button></p>
+												<p><button onclick="refresh_paused()"><i class="icon solid fa-sync"></i> Update Paused Status</button></p>
+											</div>
+																		
+											<!-- Settings -->	
+											<div id="settings-container" class="hide section-container">
+												<ul class="alt">
+													<li><input type="checkbox" id="toggle-borders" name="toggle-borders" checked></input><label for="toggle-borders">Toggle Borders</label></li>
+													<li><input type="checkbox" id="toggle-arrow" name="toggle-arrow"></input><label for="toggle-arrow">Arrow Keys to Move (BETA)</label></li>
+													<li><button onclick="update_pixels()"><i class="icon solid fa-sync"></i> Update Tiles</button></li>
+                                                							<li><button class="button claim disabled" id="add-network" onclick="add_network()"><i class="icon solid fa-plus-circle"></i> Add Network</button></li>
+												</ul>
+											</div>
 							
-																<!-- How To: -->
-																		<div id="about-container" class="hide section-container">
-										<h3>Pixel Planet - Powered by Astral Credits</h3>
-										<p>Welcome to Pixel Planet! A DApp (Decentralized Application) Pixel Canvas powered by Astral Credits. Buy pixels using XAC, create amazing works and share them with the SONGBIRD community! All tile information is stored and modified by interacting with the Pixel Planet tile smart contract.</p>
-																		<h4>Instructions:</h4>
-																		<ol>
-											<li>Click the "Connect" button to connect your wallet to the Pixel Planet application.</li>
-											<li>Select any tile on the canvas and enter in how many tokens you wish to pay for it (min price: 1 $XAC)</li>
-											<li>N.B. Ensure the amount is higher than the current price paid for that tile.</li>
-											<li>Click "Approve Spending" to allow the contract to spend a limited amount of tokens (This permission can be easily modified or revoked).</li>
-											<li>Once confirmed, click "Buy Pixel" and approve your transaction.</li>
-											<li>Once the transaction is confirmed, the tile will change to the color selected and will also display additional address and hyperlink details.</li>
-										</ol>
+											<!-- How To: -->
+											<div id="about-container" class="hide section-container">
+												<header>
+												<h3>Pixel Planet - Powered by Astral Credits</h3>
+												<p>Welcome to Pixel Planet! A DApp (Decentralized Application) Pixel Canvas powered by Astral Credits. Buy pixels using XAC, create amazing works and share them with the SONGBIRD community! All tile information is stored and modified by interacting with the Pixel Planet tile smart contract.</p>
+												</header>
+												<hr />
+												<h4>Instructions:</h4>
+												<ol>
+													<li>Click the "Connect" button to connect your wallet to the Pixel Planet application.</li>
+													<li>Select any tile on the canvas and enter in how many tokens you wish to pay for it (min price: 1 $XAC)</li>
+													<li>N.B. Ensure the amount is higher than the current price paid for that tile.</li>
+													<li>Click "Approve Spending" to allow the contract to spend a limited amount of tokens (This permission can be easily modified or revoked).</li>
+													<li>Once confirmed, click "Buy Pixel" and approve your transaction.</li>
+													<li>Once the transaction is confirmed, the tile will change to the color selected and will also display additional address and hyperlink details.</li>
+												</ol>
+											</div>
 										</div>
 									</div>
-								</div>
-						</section>
-					</article>
+								</section>
+							</article>
 
 				<!-- Footer -->
 					<footer id="footer">
