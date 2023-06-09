@@ -3967,7 +3967,7 @@ input, select, textarea {
   		border-top-right-radius: 3px;
   		border-bottom-left-radius: 3px;
   		border-bottom-right-radius: 3px;
-  		padding: 1em;
+  		padding: 0.25em 0.5em 1em 0.5em;
  		height: 100%;
   		height: calc(100% - 6px - 2em);
 		word-break: break-word;
