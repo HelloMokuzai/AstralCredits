@@ -2835,7 +2835,7 @@ input, select, textarea {
 /* Canvas Wrapper */
 
 	.canvas-wrapper {
-		min-height: 100vh;
+		min-height: 800px;
 		padding: 0;
 		background-color: #ffffff;
 		color: #4E4852;
