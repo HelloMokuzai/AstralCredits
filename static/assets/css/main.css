@@ -2832,6 +2832,168 @@ input, select, textarea {
 
 		}
 
+/* Canvas Wrapper */
+
+	.canvas-wrapper {
+		padding: 0;
+		background-color: #ffffff;
+		color: #4E4852;
+	}
+
+			.canvas-wrapper strong, .canvas-wrapper b {
+				color: #2E3842;
+			}
+
+			.canvas-wrapper h2, .canvas-wrapper h3, .canvas-wrapper h4, .canvas-wrapper h5, .canvas-wrapper h6 {
+				color: #2E3842;
+			}
+
+			.canvas-wrapper hr {
+				border-color: #dfdfdf;
+			}
+
+			.canvas-wrapper blockquote {
+				border-color: #dfdfdf;
+			}
+
+			.canvas-wrapper code {
+				background: rgba(0, 0, 0, 0.0375);
+			}
+
+			.canvas-wrapper header p {
+				color: #8E8892;
+			}
+
+			.canvas-wrapper header.major h2, .canvas-wrapper header.major h3, .canvas-wrapper header.major h4, .canvas-wrapper header.major h5, .canvas-wrapper header.major h6 {
+				border-color: #dfdfdf;
+			}
+
+			.canvas-wrapper header.major p {
+				color: #4E4852;
+			}
+
+			.canvas-wrapper label {
+				color: #2E3842;
+			}
+
+			.canvas-wrapper input[type="text"],
+			.canvas-wrapper input[type="password"],
+			.canvas-wrapper input[type="email"],
+			.canvas-wrapper select,
+			.canvas-wrapper textarea {
+				background-color: rgba(0, 0, 0, 0.0375);
+			}
+
+			.canvas-wrapper select {
+				background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' preserveAspectRatio='none' viewBox='0 0 40 40'%3E%3Cpath d='M9.4,12.3l10.4,10.4l10.4-10.4c0.2-0.2,0.5-0.4,0.9-0.4c0.3,0,0.6,0.1,0.9,0.4l3.3,3.3c0.2,0.2,0.4,0.5,0.4,0.9 c0,0.4-0.1,0.6-0.4,0.9L20.7,31.9c-0.2,0.2-0.5,0.4-0.9,0.4c-0.3,0-0.6-0.1-0.9-0.4L4.3,17.3c-0.2-0.2-0.4-0.5-0.4-0.9 c0-0.4,0.1-0.6,0.4-0.9l3.3-3.3c0.2-0.2,0.5-0.4,0.9-0.4S9.1,12.1,9.4,12.3z' fill='%23dfdfdf' /%3E%3C/svg%3E");
+			}
+
+				.canvas-wrapper select option {
+					color: #2E3842;
+					background: #ffffff;
+				}
+
+			.canvas-wrapper input[type="checkbox"] + label,
+			.canvas-wrapper input[type="radio"] + label {
+				color: #4E4852;
+			}
+
+				.canvas-wrapper input[type="checkbox"] + label:before,
+				.canvas-wrapper input[type="radio"] + label:before {
+					background: rgba(0, 0, 0, 0.0375);
+				}
+
+			.canvas-wrapper input[type="checkbox"]:checked + label:before,
+			.canvas-wrapper input[type="radio"]:checked + label:before {
+				background: #2E3842;
+				color: #ffffff;
+			}
+
+			.canvas-wrapper ::-webkit-input-placeholder {
+				color: #8E8892 !important;
+			}
+
+			.canvas-wrapper :-moz-placeholder {
+				color: #8E8892 !important;
+			}
+
+			.canvas-wrapper ::-moz-placeholder {
+				color: #8E8892 !important;
+			}
+
+			.canvas-wrapper :-ms-input-placeholder {
+				color: #8E8892 !important;
+			}
+
+			.canvas-wrapper .formerize-placeholder {
+				color: #8E8892 !important;
+			}
+
+			.canvas-wrapper .icon.major {
+				border-color: #dfdfdf;
+			}
+
+			.canvas-wrapper ul.alt li {
+				border-color: #dfdfdf;
+			}
+
+			.canvas-wrapper table tbody tr {
+				border-color: #dfdfdf;
+			}
+
+				.canvas-wrapper table tbody tr:nth-child(2n + 1) {
+					background-color: rgba(0, 0, 0, 0.0375);
+				}
+
+			.canvas-wrapper table th {
+				color: #2E3842;
+			}
+
+			.canvas-wrapper table thead {
+				border-color: #dfdfdf;
+			}
+
+			.canvas-wrapper table tfoot {
+				border-color: #dfdfdf;
+			}
+
+			.canvas-wrapper table.alt tbody tr td {
+				border-color: #dfdfdf;
+			}
+
+			.canvas-wrapper input[type="submit"],
+			.canvas-wrapper input[type="reset"],
+			.canvas-wrapper input[type="button"],
+			.canvas-wrapper button,
+			.canvas-wrapper .button {
+				box-shadow: inset 0 0 0 2px #dfdfdf;
+				color: #2E3842;
+			}
+
+				.canvas-wrapper input[type="submit"]:hover,
+				.canvas-wrapper input[type="reset"]:hover,
+				.canvas-wrapper input[type="button"]:hover,
+				.canvas-wrapper button:hover,
+				.canvas-wrapper .button:hover {
+					background-color: rgba(0, 0, 0, 0.0375);
+				}
+
+				.canvas-wrapper input[type="submit"]:active,
+				.canvas-wrapper input[type="reset"]:active,
+				.canvas-wrapper input[type="button"]:active,
+				.canvas-wrapper button:active,
+				.canvas-wrapper .button:active {
+					background-color: rgba(0, 0, 0, 0.1);
+				}
+
+			@media screen and (max-width: 736px) {
+
+				.canvas-wrapper .features li {
+					border-top-color: #dfdfdf;
+				}
+
+			}
+
 /* Wrapper */
 
 	.wrapper {
@@ -3967,7 +4129,7 @@ input, select, textarea {
   		border-top-right-radius: 3px;
   		border-bottom-left-radius: 3px;
   		border-bottom-right-radius: 3px;
-  		padding: 1em;
+  		padding: 0.25em 0.5em 1em 0.5em;
  		height: 100%;
   		height: calc(100% - 6px - 2em);
 		word-break: break-word;
