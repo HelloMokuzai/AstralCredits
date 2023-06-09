@@ -95,7 +95,7 @@
 						</header>
 						
 						<!-- Canvas -->	
-							<section class="wrapper style5">
+							<section class="canvas-wrapper">
 								<div id="loading-container2" class="inner">
 									<center>
 									<h3>Controls</h3>
@@ -106,16 +106,13 @@
 									Drag finger to move.</p>
 									</center>
 								</div>
-									
-									<div class="alt">
-										<div id="main-grid" style="display: none;">
-										<div id="pixels">
-										<canvas id="pixels-canvas"></canvas>
-		 							</div>
-								</div>
+                                
+								<div id="main-grid" style="display: none;">
+								<div id="pixels">
+									<canvas id="pixels-canvas"></canvas>
+		 						</div>		
 							</section>
-																
-														 
+																							 
 						<!-- Selection Pane -->
 							<section class="wrapper style1">
 								<div class="inner">
@@ -163,7 +160,7 @@
 													<li><input type="checkbox" id="toggle-borders" name="toggle-borders" checked></input><label for="toggle-borders">Toggle Borders</label></li>
 													<li><input type="checkbox" id="toggle-arrow" name="toggle-arrow"></input><label for="toggle-arrow">Arrow Keys to Move (BETA)</label></li>
 													<li><button onclick="update_pixels()"><i class="icon solid fa-sync"></i> Update Tiles</button></li>
-                                                							<li><button class="button primary disabled" id="add-network" onclick="add_network()"><i class="icon solid fa-plus-circle"></i> Add Network</button></li>
+                                                	<li><button class="button primary disabled" id="add-network" onclick="add_network()"><i class="icon solid fa-plus-circle"></i> Add Network</button></li>
 												</ul>
 												<h4>Add Website Link</h4>
 												<p><b>Follow the below instructions to add a website link to your creations:</b></p>
