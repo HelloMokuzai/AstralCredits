@@ -563,7 +563,7 @@ function connect_actions() {
   });
   //setup
   document.getElementById("connected-address").href = BLOCK_EXPLORER+"address/"+connected_account;
-  document.getElementById("connected-address").innerText = connected_account.slice(0, 10)+"..."+connected_account.slice(-8);
+  document.getElementById("connected-address").innerText = connected_account.slice(0, 14)+"..."+connected_account.slice(-4);
   document.getElementById("connected-address").classList.add("linky-link");
   web3_user = new Web3(window.ethereum);
   tiles_contract = new web3_user.eth.Contract(TILES_ABI, TILES_CONTRACT_ADDRESS, {
@@ -617,7 +617,7 @@ function get_buy_price() {
   let buy_price = Number(document.getElementById("buy-price").value);
   if (isNaN(buy_price)) return false;
   if (buy_price < 1) {
-    alert("Buy price must be at least 1 XAC");
+    alert("Buy price must be a minimum of 1 XAC");
     return false;
   }
   if (Math.floor(buy_price) !== buy_price) {
@@ -707,7 +707,7 @@ async function buy(x, y, prev_price) {
   };
   //make sure buy price is greater than old buy price, otherwise transaction will fail
   if (prev_price >= buy_price) {
-    alert("Your buy price is lower than the required price to overwrite the pixel colour!");
+    alert("Buy price is lower than the minimum price required to overwrite pixel colour!");
     return;
   }
   try {
@@ -994,7 +994,7 @@ document.addEventListener("pixelclick", (e) => {
   document.getElementById("pixel-info").classList.remove("hide");
   document.getElementById("painter").innerText = pixel.painter;
   if (pixel.painter === "0x0000000000000000000000000000000000000000") {
-    document.getElementById("painter").innerText = "No one... yet.";
+    document.getElementById("painter").innerText = "No one.. yet!";
   } else {
     document.getElementById("painter").innerText = pixel.painter;
   }
