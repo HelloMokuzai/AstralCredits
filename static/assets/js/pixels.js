@@ -912,6 +912,7 @@ async function draw_pixel_grid() {
   }
   let pixels = await get_pixels();
   document.getElementById("loading-container").style.display = "none";
+  document.getElementById("loading-container2").style.display = "none";
   document.getElementById("main-grid").style.display = "grid";
   canvas = new Canvas("pixels-canvas");
   pixel_grid = new PixelsGrid(canvas, pixels, GRID_WIDTH, GRID_HEIGHT);
