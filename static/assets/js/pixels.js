@@ -584,6 +584,10 @@ function connect_actions() {
   document.getElementById("add-network").disabled = false;
   document.getElementById("add-network").classList.remove("disabled");
   connected = true;
+  token_contract.methods.allowance(connected_account, TILES_CONTRACT_ADDRESS).call().then((remaining_allowance) => {
+    console.log(remaining_allowance)
+    document.getElementById("remaining-allowance").value = String(Math.floor(remaining_allowance*10**-TOKEN_DECIMALS))+" "+TOKEN_NAME;
+  });
 }
 
 //check if already connected
@@ -913,7 +917,7 @@ async function draw_pixel_grid() {
   let pixels = await get_pixels();
   document.getElementById("loading-container").style.display = "none";
   document.getElementById("loading-container2").style.display = "none";
-  document.getElementById("main-grid").style.display = "grid";
+  //document.getElementById("main-grid").style.display = "grid";
   canvas = new Canvas("pixels-canvas");
   pixel_grid = new PixelsGrid(canvas, pixels, GRID_WIDTH, GRID_HEIGHT);
   //check x_pos and y_pos to move canvas to that area
@@ -930,11 +934,6 @@ async function draw_pixel_grid() {
   canvas.update();
   //check paused
   refresh_paused();
-  //update allowance
-  token_contract.methods.allowance(connected_account, TILES_CONTRACT_ADDRESS).call().then((remaining_allowance) => {
-    console.log(remaining_allowance)
-    document.getElementById("remaining-allowance").value = String(Math.floor(remaining_allowance*10**-TOKEN_DECIMALS))+" "+TOKEN_NAME;
-  });
   //update pixels every minute or so
   setInterval(update_pixels, 60*1000);
   //drag to move
@@ -942,17 +941,18 @@ async function draw_pixel_grid() {
 
   //mousedown must start in canvas
   canvas.canvas.addEventListener("mousedown", (e) => {
-    current_touch = {
+    current_drag = {
       original_coords: [e.clientX, e.clientY],
       original_translate: pixel_grid.translateFactor,
     };
+    console.log(current_drag)
   });
   
   document.addEventListener("mousemove", (e) => {
-    if (current_touch) {
+    if (current_drag) {
       pixel_grid.translateFactor = [
-        current_touch.original_translate[0]+(current_touch.original_coords[0]-e.clientX),
-        current_touch.original_translate[1]+(current_touch.original_coords[1]-e.clientY)
+        current_drag.original_translate[0]+(current_drag.original_coords[0]-e.clientX),
+        current_drag.original_translate[1]+(current_drag.original_coords[1]-e.clientY)
       ];
       trans_bounds();
       canvas.update();
@@ -960,7 +960,13 @@ async function draw_pixel_grid() {
   });
 
   document.addEventListener("mouseup", (e) => {
-    current_touch = undefined;
+    current_drag = undefined;
+  });
+
+  //update allowance
+  token_contract.methods.allowance(connected_account, TILES_CONTRACT_ADDRESS).call().then((remaining_allowance) => {
+    console.log(remaining_allowance)
+    document.getElementById("remaining-allowance").value = String(Math.floor(remaining_allowance*10**-TOKEN_DECIMALS))+" "+TOKEN_NAME;
   });
 }
 

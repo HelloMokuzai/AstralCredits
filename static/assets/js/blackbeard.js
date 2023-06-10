@@ -7,7 +7,7 @@ class Canvas {
   constructor(id, clear_dead=true) {
     this.canvas = document.getElementById(id);
     this.clear_dead = clear_dead;
-    this.size = [this.canvas.parentElement.offsetWidth, this.canvas.parentElement.offsetHeight+175];
+    this.size = [this.canvas.parentElement.offsetWidth, this.canvas.parentElement.offsetHeight];
     this.canvas.width = this.size[0];
     this.canvas.height = this.size[1];
     this.canvas.tabIndex = 1;
