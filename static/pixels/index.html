@@ -92,7 +92,7 @@
 
 				<!-- Main -->
 					<article id="main">
-						<div id="loading-container">
+						<div class="loading-container" id="main">
 						<header>
 							<h2>Pixel Planet</h2>
 							<p>Powered by Astral Credits</p>
@@ -138,22 +138,21 @@
 											<!-- Info -->				
 											<div id="pixel-info-container" class="section-container">
 												<div id="paused-notice" class="hide">
-													<p><span><b>THE CONTRACT IS CURRENTLY PAUSED</b></span></p>
+													<p><span><b><i class="icon solid fa-pause"></i>  THE CONTRACT IS CURRENTLY PAUSED</b></span></p>
 												</div>
 																						
 												<div id="none-selected">
-													<p><b>NO PIXEL SELECTED</b></p>
+													<p><b><i class="icon solid fa-pen"></i> SELECT A PIXEL</b></p>
 												</div>
 												<div id="pixel-info" class="hide">
 													<ul class="alt">
-														<li><b>Selected Coords:</b> <span id="coords"></span> <span aria-role="button" class="copy-link" onclick="coords_link_copy()">Copy Link</span></li>
-														<li><b>Current Color:</b> <span id="current-color"></span></li>
-														<li><b>Creator:</b> <span id="painter"></span></li>
-														<li><b>Linked URL:</b> <a id="linked-url" target="_blank">None</a>
-														<br>Bad link? <a href="https://discord.gg/AJd4YDZSqD" target="_blank">Report it here</a></li>
-														<li><b>Last Price:</b> <span id="bought-price"></span></li>
+														<li><b><i class="icon solid fa-map-marker"></i> Selected Coords:</b> <span id="coords"></span> <span aria-role="button" class="copy-link" onclick="coords_link_copy()">Copy Link</span></li>
+														<li><b><i class="icon solid fa-palette"></i> Current Color:</b> <span id="current-color"></span></li>
+														<li><b><i class="icon solid fa-user"></i> Creator:</b> <span id="painter"></span></li>
+														<li><b><i class="icon solid fa-external-link-alt"></i> Linked URL:</b> <a id="linked-url" target="_blank">None</a> <sup>(Bad link? Report it <a href="https://discord.gg/AJd4YDZSqD" target="_blank">HERE</a>)</sup></li>
+														<li><b><i class="icon solid fa-external-coins"></i> Last Price:</b> <span id="bought-price"></span></li>
 													</ul>
-													<p id="open-menu-p">Open the <a href="#menu">BUY MENU</a> in the top right corner to buy this pixel!</p>
+													<p id="open-menu-p">Open the <a href="#menu"><i class="icon solid fa-shopping-cart"></i> BUY MENU</a> in the top right corner to buy this pixel!</p>
 												</div>
 											</div>
 																		
@@ -175,8 +174,8 @@
                                                 	<li><button class="button primary disabled" id="add-network" onclick="add_network()"><i class="icon solid fa-plus-circle"></i> Add Network</button></li>
 												</ul>
 												<h4>Add Website Link</h4>
-												<p><b>Astral Credits NFT Badge Holders can add a custom website links to their creations! Simply buy an Astral Credits NFT badge and register via the community Discord!</b></p>
-												<p><a href="https://sparklesnft.com/collection/songbird/astralcredits/" class="button" target="_blank"><i class="icon solid fa-shopping-cart"></i> Buy NFT Badge</a> <a href="https://discord.gg/AJd4YDZSqD" class="button claim" target="_blank"><i class="icon brands fa-discord"></i> Join Discord</a></p>
+												<p><b>Add a custom website links to their creations! Simply buy an Astral Credits NFT badge and register via the community Discord!</b></p>
+												<p><a href="https://sparklesnft.com/collection/songbird/astralcredits/" class="button" target="_blank"><i class="icon solid fa-shopping-cart"></i> Buy NFT</a> <a href="https://discord.gg/AJd4YDZSqD" class="button primary" target="_blank"><i class="icon brands fa-discord"></i> Join Discord</a></p>
 								
 											</div>
 							
