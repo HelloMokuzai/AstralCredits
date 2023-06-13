@@ -4154,6 +4154,12 @@ input, select, textarea {
   				padding-bottom: 12px;
 				}
 
+	#preview-grid {
+  				display: grid;
+ 				grid-template-columns: 70% auto;
+  				column-gap: 3px;
+				}
+
 	.color-button {
   				width: 100%;
   				height: 100%;
@@ -4226,7 +4232,7 @@ input, select, textarea {
 	#color-preview {
   				border-radius: 2px;
 				border: 0;
-  				height: 2.5em;
+  				height: 100%;
   				width: 100%;
  				display: inline-block;
   				vertical-align: middle;
