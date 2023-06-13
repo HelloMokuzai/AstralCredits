@@ -4156,7 +4156,7 @@ input, select, textarea {
 
 	#preview-grid {
   				display: grid;
- 				grid-template-columns: 70% auto;
+ 				grid-template-columns: 80% auto;
   				column-gap: 3px;
 				}
 
@@ -4230,7 +4230,7 @@ input, select, textarea {
 				}
 
 	#color-preview {
-  				border-radius: 2px;
+  				border-radius: 3px;
 				border: 0;
   				height: 100%;
   				width: 100%;
