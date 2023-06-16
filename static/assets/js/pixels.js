@@ -657,6 +657,9 @@ function color_button(color) {
 
 function parse_new_color() {
   let new_color = document.getElementById("new-color").value.trim();
+  if (new_color === "") {
+    new_color = document.getElementById("new-color").placeholder;
+  }
   if (new_color.startsWith("#") && (new_color.length === 7 || new_color.length === 9)) {
     //hex
     new_color = new_color.replace("#", "").toUpperCase();
@@ -1077,7 +1080,8 @@ function update_color() {
   }
 }
 
-document.getElementById("new-color").addEventListener("change", update_color);
+document.getElementById("new-color").addEventListener("input", update_color);
+update_color();
 
 //key events
 let allow_arrow_move = false;
@@ -1186,6 +1190,7 @@ let current_touch;
 
 //touch must start in canvas
 document.addEventListener("touchstart", function(e) {
+  if (e.touches[0].target !== canvas.canvas) return;
   current_touch = {
     original_touch: [e.touches[0].clientX, e.touches[0].clientY],
     original_translate: pixel_grid.translateFactor,
@@ -1200,9 +1205,11 @@ document.addEventListener("touchmove", function(e) {
     ];
     trans_bounds();
     canvas.update();
+    e.preventDefault();
   }
 });
 
 document.addEventListener("touchend", function(e) {
+  if (e.touches[0].target !== canvas.canvas) return;
   current_touch = undefined;
 });
