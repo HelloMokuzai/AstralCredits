@@ -255,10 +255,6 @@ button:disabled {
   background-color: #7eed56;
 }
 
-#pixels-canvas {
-  touch-action: pinch-zoom;
-}
-
 @media screen and (max-width: 1000px) {
   #top {
     grid-template-columns: auto auto;
