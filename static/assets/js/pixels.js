@@ -701,7 +701,7 @@ function parse_new_color() {
 
 async function buy(x, y, prev_price) {
   //shouldnt happen
-  if (!x || !y) return;
+  if (x === undefined || y === undefined) return;
   if (!connected) return;
   //make sure there is buy price
   let buy_price = get_buy_price();
@@ -915,7 +915,7 @@ async function draw_pixel_grid() {
     all_linked = await (await fetch('/linked_websites.json')).json();
   } catch (e) {
     console.log(e);
-    all_linked = {};
+    all_linked = [];
   }
   let pixels = await get_pixels();
   document.getElementById("loading-container").style.display = "none";
@@ -1046,7 +1046,7 @@ document.addEventListener("pixelclick", (e) => {
     document.getElementById("linked-url").innerText = linked.url;
   }
   //format the coords
-  document.getElementById("coords").innerText = "("+coords.join(", ")+")";
+  document.getElementById("coords-span").innerText = "("+coords.join(", ")+")";
   //format the paid amount
   document.getElementById("bought-price").innerText = String(pixel.paid_amount*(10**-TOKEN_DECIMALS))+" $"+TOKEN_NAME;
   //format the color
