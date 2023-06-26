@@ -2841,6 +2841,27 @@ input, select, textarea {
 		color: #4E4852;
 	}
 
+			.canvas-wrapper > .inner {
+			width: 60em;
+			margin: 0 auto;
+		}
+
+			@media screen and (max-width: 1280px) {
+
+				.canvas-wrapper > .inner {
+					width: 90%;
+				}
+
+			}
+
+			@media screen and (max-width: 980px) {
+
+				.canvas-wrapper > .inner {
+					width: 100%;
+				}
+
+			}
+
 			.canvas-wrapper strong, .canvas-wrapper b {
 				color: #2E3842;
 			}
