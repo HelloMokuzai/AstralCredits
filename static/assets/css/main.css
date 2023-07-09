@@ -2529,30 +2529,56 @@ input, select, textarea {
 				background-color: #eb341c !important;
 			}
 
-		input[type="submit"].claim,
-		input[type="reset"].claim,
-		input[type="button"].claim,
-		button.claim,
-		.button.claim {
+		input[type="submit"].discord,
+		input[type="reset"].discord,
+		input[type="button"].discord,
+		button.discord,
+		.button.discord {
 			background-color: #5933e1;
 			box-shadow: none !important;
 			color: #ffffff !important;
 		}
 
-			input[type="submit"].claim:hover,
-			input[type="reset"].claim:hover,
-			input[type="button"].claim:hover,
-			button.claim:hover,
-			.button.claim:hover {
+			input[type="submit"].discord:hover,
+			input[type="reset"].discord:hover,
+			input[type="button"].discord:hover,
+			button.discord:hover,
+			.button.discord:hover {
 				background-color: #6543df !important;
 			}
 
-			input[type="submit"].claim:active,
-			input[type="reset"].claim:active,
-			input[type="button"].claim:active,
-			button.claim:active,
-			.button.claim:active {
+			input[type="submit"].discord:active,
+			input[type="reset"].discord:active,
+			input[type="button"].discord:active,
+			button.discord:active,
+			.button.discord:active {
 				background-color: #4c25e0 !important;
+			}
+			
+		input[type="submit"].twitter,
+		input[type="reset"].twitter,
+		input[type="button"].twitter,
+		button.twitter,
+		.button.twitter {
+			background-color: #2196f3;
+			box-shadow: none !important;
+			color: #ffffff !important;
+		}
+
+			input[type="submit"].twitter:hover,
+			input[type="reset"].twitter:hover,
+			input[type="button"].twitter:hover,
+			button.twitter:hover,
+			.button.twitter:hover {
+			background-color: #5eb1f7 !important;
+			}
+
+			input[type="submit"].twitter:active,
+			input[type="reset"].twitter:active,
+			input[type="button"].twitter:active,
+			button.twitter:active,
+			.button.twitter:active {
+			background-color: #158ef2 !important;
 			}
 
 		input[type="submit"].disabled, input[type="submit"]:disabled,
