@@ -935,6 +935,42 @@ async function draw_pixel_grid() {
   }
   //update canvas
   canvas.update();
+  if (query_params.get("picture") === "true") {
+    let date_string = String((new Date()).getUTCMonth()+1)+"/"+String((new Date()).getUTCDate());
+    //download picture of entire canvas
+    pixel_grid.scaleFactor = 4;
+    canvas.update();
+    let canvas_dos = document.createElement("CANVAS");
+    canvas_dos.hidden = true;
+    document.body.appendChild(canvas_dos);
+    canvas_dos.height = 500;
+    canvas_dos.width = 500;
+    let canvas_dos_context = canvas_dos.getContext("2d");
+    canvas_dos_context.fillStyle = "white";
+    canvas_dos_context.fillRect(0, 0, 510, 510);
+    canvas_dos_context.drawImage(canvas.canvas, 0, 0);
+    let a = document.createElement("A");
+    a.download = "pixelplanet_border"+date_string+".png";
+    a.href = canvas_dos.toDataURL();
+    document.body.appendChild(a);
+    a.click();
+    pixel_grid.borders = false;
+    canvas.update();
+    canvas_dos_context.fillRect(0, 0, 510, 510);
+    canvas_dos_context.drawImage(canvas.canvas, 0, 0);
+    let a2 = document.createElement("A");
+    a2.download = "pixelplanet_noborder"+date_string+".png";
+    a2.href = canvas_dos.toDataURL();
+    document.body.appendChild(a2);
+    a2.click();
+    //reset
+    /*
+    pixel_grid.borders = true;
+    pixel_grid.scaleFactor = 1;
+    canvas.update();
+    */
+  }
+
   //check paused
   refresh_paused();
   //update pixels every minute or so
