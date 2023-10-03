@@ -495,6 +495,52 @@ const ERC20_ABI = [
   }
 ];
 
+const SGB_DOMAIN_ABI = [
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [
+      {
+        "type": "string",
+        "name": "",
+        "internalType": "string"
+      }
+    ],
+    "name": "getDefaultDomain",
+    "inputs": [
+      {
+        "type": "address",
+        "name": "_addr",
+        "internalType": "address"
+      },
+      {
+        "type": "string",
+        "name": "_tld",
+        "internalType": "string"
+      }
+    ]
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [
+      {
+        "type": "string",
+        "name": "",
+        "internalType": "string"
+      }
+    ],
+    "name": "getDefaultDomains",
+    "inputs": [
+      {
+        "type": "address",
+        "name": "_addr",
+        "internalType": "address"
+      }
+    ]
+  }
+];
+
 const web3_read = new Web3();
 
 //https://songbird-api.flare.network/ext/C/rpc
@@ -502,6 +548,7 @@ const web3_read = new Web3();
 const RPC_URL = "https://sgb.ftso.com.au/ext/bc/C/rpc";
 const TOKEN_CONTRACT_ADDRESS = "0x61b64c643fCCd6ff34Fc58C8ddff4579A89E2723";
 const TILES_CONTRACT_ADDRESS = "0x93CA88Ee506096816414078664641C07aF731026";
+const SGB_DOMAIN_CONTRACT_ADDRESS = "0x7e8aB50697C7Abe63Bdab6B155C2FB8D285458cB";
 const OWNER = "0x36BD98927FC87E29b446f26623560C0C18062562";
 const TOKEN_DECIMALS = 18;
 const TOKEN_NAME = "XAC";
@@ -520,6 +567,8 @@ const CHAIN_INFO = {
 
 web3_read.eth.setProvider(RPC_URL);
 let tiles_contract_read = new web3_read.eth.Contract(TILES_ABI, TILES_CONTRACT_ADDRESS);
+
+let sgb_domain_contract = new web3_read.eth.Contract(SGB_DOMAIN_ABI, SGB_DOMAIN_CONTRACT_ADDRESS)
 
 let tiles_contract;
 let token_contract;
@@ -1067,7 +1116,7 @@ function coords_link_copy() {
   navigator.clipboard.writeText("https://"+location.host+location.pathname+"?x_pos="+String(pixel_grid.selected[0])+"&y_pos="+String(pixel_grid.selected[1]));
 }
 
-document.addEventListener("pixelclick", (e) => {
+document.addEventListener("pixelclick", async (e) => {
   let pixel = e.detail.pixel;
   let coords = e.detail.coords;
   document.getElementById("none-selected").classList.add("hide");
@@ -1076,7 +1125,12 @@ document.addEventListener("pixelclick", (e) => {
   if (pixel.painter === "0x0000000000000000000000000000000000000000") {
     document.getElementById("painter").innerText = "No one.. yet!";
   } else {
-    document.getElementById("painter").innerText = pixel.painter;
+    let sgb_domain = await sgb_domain_contract.methods.getDefaultDomain(pixel.painter, ".sgb").call();
+    if (sgb_domain) {
+      document.getElementById("painter").innerText = `${sgb_domain}.sgb (${pixel.painter})`;
+    } else {
+      document.getElementById("painter").innerText = pixel.painter;
+    }
   }
   let linked = all_linked.find(function(item) {
     return item.address === pixel.painter.toLowerCase();
