@@ -613,6 +613,11 @@ function connect_actions() {
   //setup
   document.getElementById("connected-address").href = BLOCK_EXPLORER+"address/"+connected_account;
   document.getElementById("connected-address").innerText = connected_account.slice(0, 14)+"..."+connected_account.slice(-4);
+  sgb_domain_contract.methods.getDefaultDomain(connected_account, ".sgb").call().then((sgb_domain) => {
+    if (sgb_domain) {
+      document.getElementById("connected-address").innerText = `${sgb_domain}.sgb`;
+    }
+  });
   document.getElementById("connected-address").classList.add("linky-link");
   web3_user = new Web3(window.ethereum);
   tiles_contract = new web3_user.eth.Contract(TILES_ABI, TILES_CONTRACT_ADDRESS, {
