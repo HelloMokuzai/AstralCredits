@@ -538,6 +538,30 @@ const SGB_DOMAIN_ABI = [
         "internalType": "address"
       }
     ]
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [
+      {
+        "type": "address",
+        "name": "",
+        "internalType": "address"
+      }
+    ],
+    "name": "getDomainHolder",
+    "inputs": [
+      {
+        "type": "string",
+        "name": "_domainName",
+        "internalType": "string"
+      },
+      {
+        "type": "string",
+        "name": "_tld",
+        "internalType": "string"
+      }
+    ]
   }
 ];
 
@@ -1001,7 +1025,8 @@ async function draw_pixel_grid() {
     GRID_HEIGHT = Number(await tiles_contract_read.methods.height().call());
   }
   try {
-    all_linked = await (await fetch('/linked_websites.json')).json();
+    //this should be cached
+    all_linked = await (await fetch("https://astral-credits-bot.fly.dev/linked_websites.json")).json();
   } catch (e) {
     console.log(e);
     all_linked = [];
