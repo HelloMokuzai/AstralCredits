@@ -185,7 +185,7 @@ input, select, textarea {
 		}
 
 		rain {
-  background: linear-gradient(to right, #21b2a6, #2196f3, #7e57c2);
+  background: linear-gradient(to right, #4c25e0, #7e57c2, #7e57c2);
 		
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
