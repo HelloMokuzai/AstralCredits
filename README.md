@@ -4,7 +4,7 @@
 
 Astral Credits (XAC) is an ERC20 token on the SONGBIRD Network.
 
-Webite: https://astralcredits.xyz/
+Website: https://astralcredits.xyz/
 
 Pixel Planet DApp: https://astralcredits.xyz/pixels/
 
