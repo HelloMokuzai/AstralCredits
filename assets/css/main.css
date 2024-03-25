@@ -2118,6 +2118,11 @@ input, select, textarea {
 			display: block;
 		}
 
+		.image img.icon {
+			border-radius: 0px;
+			height: 1em;
+		}
+
 		.image.left {
 			float: left;
 			margin: 0 2em 2em 0;
