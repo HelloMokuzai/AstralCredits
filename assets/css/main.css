@@ -162,6 +162,14 @@ input, select, textarea {
 		margin: 0 0 2em 0;
 	}
 
+	green {
+		color: #21b2a6;
+	}
+	
+	red {
+		color: #ed4933;
+	}
+
 	error {
 		color: #ed4933;
 	}
