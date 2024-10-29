@@ -53,6 +53,8 @@ A DApp (Decentralized Application) powered by Astral Credits. Bid to color in pi
 - DABz, Nishikigoi, MiniMogMoogle, Digital Addict - Founding Members
 - DDAY, Marcthenarc - Moderators (Discord)
 
+💌 `astralcredits@protonmail.com`
+
 DISCLAIMER
 
 *Please view our [Terms of Service](https://github.com/HelloMokuzai/AstralCredits/blob/main/docs/Terms-of-Service.pdf)*
