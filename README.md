@@ -35,6 +35,7 @@ Available on [CoinGecko](https://www.coingecko.com/en/coins/astral-credits)
  
 - **Fixed supply cap** - 1B Tokens in total.
 - **Deflationary supply schedule** - Every 6 months, the amount of XAC tokens distributed per claim is halved. This is expected to continue for a period of 15 years (30 halving events).
+- **Burn Mechanism** - Any XAC that is not claimed before the faucet resets at the end of a month is [automatically burned](https://songbird-explorer.flare.network/address/0x1111111111111111111111111111111111111111)
 - **Free & fair distribution model** - 80% of tokens to be distributed freely. 10% reserved for NFT badge airdrops and the remaining 10% in reserve to fund future projects to expand the XAC ecosystem.
 
 ## Ecosystem projects
