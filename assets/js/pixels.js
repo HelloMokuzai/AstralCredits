@@ -568,8 +568,8 @@ const SGB_DOMAIN_ABI = [
 const web3_read = new Web3();
 
 //https://songbird-api.flare.network/ext/C/rpc
-//https://sgb.ftso.com.au/ext/bc/C/rpc
-const RPC_URL = "https://sgb.ftso.com.au/ext/bc/C/rpc";
+//https://sgb.ftso.com.au/ext/bc/C/rpc (no longer working?)
+const RPC_URL = "https://songbird-api.flare.network/ext/bc/C/rpc";
 const TOKEN_CONTRACT_ADDRESS = "0x61b64c643fCCd6ff34Fc58C8ddff4579A89E2723";
 const TILES_CONTRACT_ADDRESS = "0x93CA88Ee506096816414078664641C07aF731026";
 const SGB_DOMAIN_CONTRACT_ADDRESS = "0x7e8aB50697C7Abe63Bdab6B155C2FB8D285458cB";
