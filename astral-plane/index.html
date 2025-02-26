@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Barebones Astral Bridge UI</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+  </head>
+  <body>
+    <button id="connect">Connect</button>
+    <p>Make sure you have both the Flare and Songbird networks added.</p>
+    <h1>Step 1: Burn sgbXAC</h1>
+    <p>Burn however much sgbXAC you want to bridge by sending it to <code id="burn-address"></code>, receiving a 10:1 ratio of flareXAC in return.</p>
+    <p>If you weren't able to submit the TX hash the first time for whatever reason, you can manually enter it and try again.</p>
+    <button id="burn-web3" disabled>In-browser Web3 Wallet</button>
+    <button id="burn-manually" disabled>Manually</button>
+    <h1>Step 2: Submit TX Hash</h1>
+    <p>Submit the TX hash of the burn, get a signature. Submit the signature to the Flare bridge contract, and get your flareXAC!</p>
+    <input type="text" id="tx-hash" disabled/>
+    <button id="submit" disabled>Submit</button>
+    <a id="result" target="_blank"></a>
+    <script src="https://unpkg.com/web3@1.9.0/dist/web3.min.js"></script>
+    <script src="/assets/js/plane.js"></script>
+  </body>
+</html>
