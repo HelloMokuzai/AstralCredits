@@ -2,7 +2,7 @@
 
 # Astral Credits
 ### https://www.astralcredits.xyz/
-[Whitepaper](https://github.com/HelloMokuzai/AstralCredits/blob/main/static/docs/Whitepaper.pdf) | [Vision Statement](https://github.com/HelloMokuzai/AstralCredits/blob/main/static/docs/Vision-Statement.pdf)
+[Whitepaper](https://github.com/HelloMokuzai/AstralCredits/blob/main/docs/Whitepaper.pdf) | [Vision Statement](https://github.com/HelloMokuzai/AstralCredits/blob/main/docs/Vision-Statement.pdf)
 
 **Astral Credits is a fun, community-driven, open-source peer-to-peer digital currency project developing decentralized applications on the FLARE & SONGBIRD Networks, built upon sound money principles.**
 
