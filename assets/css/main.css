@@ -2,9 +2,8 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,800,800italic");
 
 /*
-	Spectral by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+	Made with <3 for the ASTRAL CREDITS community!
+	MKZI Design Labs - https://github.com/HelloMokuzai
 */
 
 html, body, div, span, applet, object,
@@ -3247,7 +3246,7 @@ input, select, textarea {
 			}
 
 		.wrapper.style2 {
-			background-color: #2e3842;
+			background: linear-gradient(to right, #080808, #0f0f0f, #151515, #191919, #1b1b1e, #1e1c22, #201e27, #211d2d, #221b33, #241938, #26173d, #321e52);
 		}
 
 		.wrapper.style3 {
