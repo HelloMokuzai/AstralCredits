@@ -2873,7 +2873,7 @@ input, select, textarea {
 /* Canvas Wrapper */
 
 	.canvas-wrapper {
-		max-height: 75vh;
+		max-height: 90vh;
 		padding: 0;
 		background-color: #ffffff;
 		color: #4E4852;
