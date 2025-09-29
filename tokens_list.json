@@ -16,5 +16,21 @@
       "address": "0x61b64c643fCCd6ff34Fc58C8ddff4579A89E2723",
       "logoURI": "https://raw.githubusercontent.com/HelloMokuzai/AstralCredits/refs/heads/main/images/tokens/XAC.png"
     }
+    {
+      "chainId": 19,
+      "name": "BlueBirdX",
+      "symbol": "BBX",
+      "decimals": 18,
+      "address": "0x29d3dfb4bd040f04bd0e01c28a4cb9de14b47e13",
+      "logoURI": "https://raw.githubusercontent.com/HelloMokuzai/AstralCredits/refs/heads/main/images/tokens/BBX.png"
+    }
+    {
+      "chainId": 19,
+      "name": "Wrapped BlueBirdX",
+      "symbol": "WBBX",
+      "decimals": 18,
+      "address": "0xE99F00eC8D25bFbe9d684231B04Fb5Bc5243B028",
+      "logoURI": "https://raw.githubusercontent.com/HelloMokuzai/AstralCredits/refs/heads/main/images/tokens/WBBX.png"
+    }
   ]
 }
