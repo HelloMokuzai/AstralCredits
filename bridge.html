@@ -1,0 +1,196 @@
+<!DOCTYPE HTML>
+<html>
+<!-- 
+	Made with ❤ for the ASTRAL CREDITS community!
+	MKZI Design Labs - https://github.com/HelloMokuzai
+-->
+	<head>
+		<title>The Astral Plane | by Astral Credits</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	    <meta property="og:site_name" content="The Astral Plane | Powered by Astral Credits (XAC)">
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="https://astralcredits.xyz/bridge/">
+		<meta property="og:image" content="https://raw.githubusercontent.com/HelloMokuzai/AstralCredits/main/static/images/banner_bridge.jpg">
+		<meta property="og:description" content="The Astral Plane - Send your XAC from Songbird to the Flare Network!"/>
+		<meta name="twitter:card" content="summary_large_image"/>
+		<meta name="twitter:title" content="The Astral Plane | Powered by Astral Credits (XAC)"/>
+		<meta name="twitter:description" content="The Astral Plane - Send your XAC from Songbird to the Flare Network!"/>
+		<meta name="twitter:site" content="@AstralCredits"/>
+		<meta name="twitter:image" content="https://raw.githubusercontent.com/HelloMokuzai/AstralCredits/main/static/images/banner_bridge.jpg"/>
+		<meta name="twitter:creator" content="@HelloMokuzai"/>
+		<link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="shortcut icon" type="image/x-icon" href="favicon5.ico">
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+
+	<body class="landing is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="https://astralcredits.xyz/">Astral Credits<b> | The Astral Plane</b></h1>
+						<nav id="nav">
+							<ul>
+								<li class="special">
+									<a href="#menu" class="menuToggle"><span>Menu</span></a>
+									<div id="menu">
+										<ul>
+											<li><button class="button fit" id="connect" onclick="connect()">Connect</button></li>
+											<li><a id="connected-address" href="" target="_blank"></a></li>
+										</ul>
+                                        	<p>
+											<label for="burn-qty">Burn QTY (XAC)</label>
+											<input id="burn-qty" type="text" placeholder="10" onclick="burn()">
+                                          	<sub>Amount of XAC on SONGBIRD to be burned</sub>
+                                            </p>
+                                            <label for="mint-qty">Mint QTY (F-XAC)</label>
+											<input id="mint-qty" type="text" placeholder="1" disabled>
+                                            <sub>Amount of F-XAC on FLARE to be received</sub>
+											</p>
+										<ul>
+                                        	<li><button class="button primary fit disabled" id="burn-web3" disabled>Burn & Mint <i class="icon solid fa-check-circle"></i></button></li>
+											<li><button class="button fit disabled" id="burn-manually" onclick="approve()" disabled>Manual</button></li>
+										</ul>
+                                        	<label for="tx-hash">Tx Hash <i class="icon solid fa-clone"></i></label>
+											<input id="tx-hash" type="text" placeholder="" disabled>
+                                            <br>
+                                            <button class="button disabled" id="submit" disabled>Submit</button>
+									</div>
+								</li>
+							</ul>
+						</nav>
+					</header>
+                
+				<!-- Intro -->
+					<article id="main">
+						<header>
+							<h2>The Astral Plane</h2>
+							<p>A secure, one-way bridge</p>
+                            <p><img src="images/XAC-bridge.gif" alt="" height="200px" /></p>
+                            Send your XAC from Songbird<br />
+							to the <span class="image"><a href="https://flare.network/" target="_blank"><img src="images/Flare_dark_bg.png" style="vertical-align:botton" alt="" height="22px" /></a></span> network.</p>
+						</header>
+						
+                        <!-- About -->
+						<section id="about" class="wrapper style2 special">
+						<div class="inner">
+							<header class="major">
+								<h2><b>Send your XAC to</b> Mainnet</h2>
+                               	<p>The Astral Plane is a <b>One-Way Bridge</b> enabling users to send XAC securely cross-chain, from the SONGBIRD Canary Network to the FLARE Network (Mainnet).</p>
+							</header>
+                            <p><h2><img src="images/tokens/SGB.png" alt="" height="100px" style="vertical-align: middle;" /> <i class="icon solid fa-long-arrow-alt-right"></i><img src="images/tokens/FLR.png" alt="" height="110px" style="vertical-align: middle;" /></h2></p>
+							<ul class="features">
+								<li special class="icon solid fa-link">
+									<h3>STEP 1. <b>Connect Wallet</b></h3>
+									<p><p id="open-menu-p">Open the <a href="#menu">MENU <i class="icon solid fa-bars"></i></a> in the top right corner and connect your Web3 wallet of choice. (Make sure you have both the Flare and Songbird Networks added.)</p>
+								</li>
+								<li class="icon solid fa-coins">
+									<h3>STEP 2. <b>Specify Amount</b></h3>
+									<p>Specify the amount of XAC on Songbird that you wish to burn. The system will display an equivalent ratio of the total supply of XAC on Flare to be received (10:1).</p>
+								</li>
+								<li class="icon solid fa-burn">
+									<h3>STEP 3. <b>Burn XAC on SONGBIRD</b></h3>
+									<p>Click the <b>Burn & Mint</b> button and sign the transaction to burn the specified amount of XAC on Songbird and submit the Tx hash as proof. (To burn tokens manually, <a href="">see below</a>.)</p>
+								</li>
+								<li class="icon solid fa-check-circle">
+									<h3>STEP 4. <b>Receive F-XAC on FLARE</b></h3>
+									<p>The signed Tx Hash will then be submitted to the Flare bridge contract, with the amount of F-XAC on Flare as specified being minted and sent to you!</p>
+								</li>
+							</ul>
+						</div>
+                        </section>
+                        
+                <!-- FAQ -->            
+                	<section class="wrapper style5" id="faq">
+						<div class="inner">
+                           	<header>
+								<h2>Frequently Asked Questions</h2>
+                            </header>
+							<p><strong>What is the total supply of XAC on Flare?</strong></p>
+                            <blockquote>There is a hard-cap of 100 MILLION F-XAC tokens on Flare. Though this value is theoretical only as there is a non-zero amount of tokens which have been burned or lost. Since F-XAC is newly minted on completion of the bridging process, the total supply for F-XAC on-chain will reflect the amount of tokens minted at that time.</blockquote>
+                            <p><strong>Why do I receive less tokens when bridging to Flare?</strong></p>
+                            <blockquote>Whilst there are 1 BILLION XAC tokens on Songbird, there is a hard-cap of just 100 MILLION F-XAC tokens on Flare - a ratio of 10:1. When burning tokens on Songbird, you can expect to receive an equivalent ratio of the total supply of tokens on Flare.</blockquote>
+                            <p><strong>Why a bridge instead of a snapshot?</strong></p>
+                            <blockquote>Since we aim to continue supporting XAC on both networks. Burn-to-Mint was chosen as the bridging method of choice as it ensures relative scarcity for XAC tokens on Songbird, whilst simultaneously maintaining a tight circulating supply for XAC on Flare.</blockquote>
+                       		<p><center><img src="images/FXAC_2.png" alt="" height="200px" /></center></p>
+                        </div>
+					</section>
+                    
+                <!-- Ecosystem -->
+					<section id="eco" class="wrapper alt style2">
+						<section class="spotlight" id="dex">
+							<div class="image"><img src="images/feature3.jpg" alt="" /></div><div class="content">
+								<h2>BlazeSwap<br />
+								<b>Buy Astral Credits on Flare</b></h2>
+								<p>Buy F-XAC and add liquidity to the BlazeSwap Astral Credits pool to earn liquidity provider rewards on your F-XAC!</p>
+                                <p><a href="https://app.blazeswap.xyz/swap/?outputCurrency=0x61b64c643fccd6ff34fc58c8ddff4579a89e2723" class="button " target="_blank"><i class="icon solid fa-shopping-cart"></i> Buy F-XAC</a> <a href="https://app.blazeswap.xyz/swap/?tokenList=https://www.astralcredits.xyz/tokens_list.json" class="button " target="_blank"><i class="icon solid fa-plus"></i> Add Token</a></p>             
+							</div>
+						</section>
+                        <section class="spotlight" id="tipbot">
+							<div class="image"><img src="images/feature7.jpg" alt="" /></div><div class="content">
+								<h2>Tipbot Awards<br />
+								<b>Spend F-XAC on exclusive Awards</b></h2>
+								<p>Tipbot Awards is a collection of awesome, unique NFTs that you will be able to buy with F-XAC as well as send, collect and showcase using Mr.Tipbot!</p>
+                                <p><a href="/tipbot" class="button disabled"><i class="icon solid fa-shopping-cart"></i> COMING SOON</a></p>
+							</div>
+						</section>
+					</section>
+                    
+                <!-- Technical -->
+					<section id="cta" class="wrapper style4">
+						<div class="inner">
+							<header>
+								<span class="image right"><img src="images/qr-code.svg" alt=""/></span>
+								<h3>Technical</h3>
+								<p>Flare Astral Credits (FXAC) is an ERC20 token on the <a href="https://flare.network/" target="_blank">FLARE Network</a>.</br>
+								<form><input type="text" value="0x0000000000000000000000000000000000000000" id="ContractAddress"></form> 
+								<a class="button" onclick="ContractFunction()";><i class="icon solid fa-copy"></i> Copy to Clipboard</a></p>
+							</header>
+							<ul class="actions stacked">
+								<li><a href="https://songbird-explorer.flare.network/token/0x61b64c643fCCd6ff34Fc58C8ddff4579A89E2723/token-transfers" class="button primary fit" target="_blank">View Contract</a></li>
+								<li><a href="https://docs.flare.network/user/wallets/how-to-access-flare-network-with-metamask/" class="button fit" target="_blank"><i class="icon solid fa-plus-circle"></i> Add Flare</a></li>
+							</ul> 
+						</div>
+					</section>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<ul class="icons">
+							<li><a href="https://twitter.com/AstralCredits" class="icon brands fa-twitter" target="_blank"><span class="label">Twitter</span></a></li>
+							<li><a href="https://discord.gg/AJd4YDZSqD" class="icon brands fa-discord" target="_blank"><span class="label">Discord</span></a></li>
+							<li><a href="https://www.reddit.com/r/AstralCredits/" class="icon brands fa-reddit-alien" target="_blank"><span class="label">Reddit</span></a></li>
+							<li><a href="https://www.youtube.com/@AstralCredits" class="icon brands fa-youtube" target="_blank"><span class="label">YouTube</span></a></li>
+							<li><a href="https://github.com/Astral-Credits" class="icon brands fa-github" target="_blank"><span class="label">Github</span></a></li>
+							<li><a href="mailto:astralcredits@protonmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+						</ul>
+						<ul class="copyright">
+                        	<li><a href="docs/Terms-of-Service.pdf" target="_blank">Terms of Service</a></li>
+							<li>&copy; Astral Credits 2025</li>
+							<li><a href="https://github.com/HelloMokuzai" target="_blank">MKZI Design Labs</a></li>
+						</ul>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+		   	<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+            <script>
+				function ContractFunction() {
+					var copyText = document.getElementById("ContractAddress");
+					copyText.select();
+					copyText.setSelectionRange(0, 99999)
+					document.execCommand("copy");
+					alert("Copied to clipboard: " + copyText.value);
+				}
+			</script>
+	</body>
+</html>
