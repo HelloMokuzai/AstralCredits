@@ -19,9 +19,9 @@
 		<meta name="twitter:site" content="@AstralCredits"/>
 		<meta name="twitter:image" content="https://raw.githubusercontent.com/HelloMokuzai/AstralCredits/refs/heads/main/images/banner_bridge.jpg"/>
 		<meta name="twitter:creator" content="@HelloMokuzai"/>
-		<link rel="stylesheet" href="assets/css/main.css" />
-        <link rel="shortcut icon" type="image/x-icon" href="favicon5.ico">
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet" href="/assets/css/main.css" />
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon5.ico">
+		<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
 	</head>
 
 	<body class="landing is-preload">
@@ -43,21 +43,22 @@
 										</ul>
                                         	<p>
 											<label for="burn-qty">Burn QTY (XAC)</label>
-											<input id="burn-qty" type="text" placeholder="10" onclick="burn()">
-                                          	<sub>Amount of XAC on SONGBIRD to be burned</sub>
+											<input id="burn-qty" type="text" placeholder="10" disabled>
+                                          	<sub>Amount of XAC on SONGBIRD to be burned (can do 'all' to burn all)</sub>
                                             </p>
                                             <label for="mint-qty">Mint QTY (F-XAC)</label>
 											<input id="mint-qty" type="text" placeholder="1" disabled>
                                             <sub>Amount of F-XAC on FLARE to be received</sub>
 											</p>
 										<ul>
-                                        	<li><button class="button primary fit disabled" id="burn-web3" disabled>Burn & Mint <i class="icon solid fa-check-circle"></i></button></li>
-											<li><button class="button fit disabled" id="burn-manually" onclick="approve()" disabled>Manual</button></li>
+                                        	<li><button class="button primary fit" id="burn-web3" disabled>Burn with Web3 Wallet<i class="icon solid fa-check-circle"></i></button></li>
+											<li><button class="button fit" id="burn-manually" onclick="approve()" disabled>Burn Manually</button></li>
 										</ul>
+                    <p style="display: none; overflow-wrap: break-word;" id="manual-text">Send XAC to the burn address <span id="burn-address"></span>, and save the TX hash of the burn.</p>
                                         	<label for="tx-hash">Tx Hash <i class="icon solid fa-clone"></i></label>
 											<input id="tx-hash" type="text" placeholder="" disabled>
                                             <br>
-                                            <button class="button disabled" id="submit" disabled>Submit</button>
+                                            <button class="button" id="submit" disabled>Submit</button>
 									</div>
 								</li>
 							</ul>
@@ -176,13 +177,15 @@
 			</div>
 
 		<!-- Scripts -->
-		   	<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<script src="https://unpkg.com/web3@1.9.0/dist/web3.min.js"></script>
+		  <script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/assets/js/jquery.scrolly.min.js"></script>
+			<script src="/assets/js/browser.min.js"></script>
+			<script src="/assets/js/breakpoints.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+      <script src="/assets/js/plane.js"></script>
+			<script src="/assets/js/main.js"></script>
             <script>
 				function ContractFunction() {
 					var copyText = document.getElementById("ContractAddress");

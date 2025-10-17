@@ -28,14 +28,12 @@ contract FlareAstralCredits is IERC20 {
     uint256 private _totalSupply;
 
     address public immutable astralPlaneAddress;
-    address public immutable admin; // For potential future governance or emergency controls
     uint256 private immutable _maxSupply = 100000000000000000000000000; //100 million max
 
     event Mint(address indexed to, uint256 amount, string tx_hash);
 
     constructor(address _astralPlaneAddress) {
         astralPlaneAddress = _astralPlaneAddress;
-        admin = msg.sender;
         _totalSupply = 0; // No pre-mine yo
     }
 
@@ -90,6 +88,7 @@ contract FlareAstralCredits is IERC20 {
     }
 
     // Mint on Burn function - Based on AstralPlane claims (claim_amount)
+    //CEI
     function mintFromBurn(string calldata tx_hash, uint256 amount, uint8 _v, bytes32 _r, bytes32 _s) external {
         IAstralPlane astralPlane = IAstralPlane(astralPlaneAddress);
 

@@ -468,10 +468,12 @@ const FLARE_TOKEN_ABI = [
 
 //signer: 0x37987397aC240f0cbCaA10a669bC2C90A91C0d51
 const SGB_TOKEN_CONTRACT_ADDRESS = "0x61b64c643fCCd6ff34Fc58C8ddff4579A89E2723";
-const FLARE_TOKEN_CONTRACT_ADDRESS = "0xa70ff9C531E4fA372436A0bb07725008f61F48C2";
-//const BRIDGE_CONTRACT_ADDRESS = "0xAE1A83a65A8b218B311dD888DB17E60399c50F17";
+const FLARE_TOKEN_CONTRACT_ADDRESS = "0xb627731F0c5517398657d6Ac9A31646003a9d630";
+//const BRIDGE_CONTRACT_ADDRESS = "0x2B62BD5684DCAde0e4487bb16263ad93C215C092";
 
 const BURN_ADDRESS = "0x" + "a".repeat(40);
+
+document.getElementById("ContractAddress").value = FLARE_TOKEN_CONTRACT_ADDRESS;
 
 let web3_user;
 let connected_account;
@@ -492,6 +494,7 @@ document.getElementById("connect").onclick = async () => {
     sgb_token_contract = new web3_user.eth.Contract(ERC20_ABI, SGB_TOKEN_CONTRACT_ADDRESS, {
       from: connected_account,
     });
+    document.getElementById("burn-qty").disabled = false;
     document.getElementById("burn-web3").disabled = false;
     document.getElementById("burn-manually").disabled = false;
   }
@@ -499,8 +502,18 @@ document.getElementById("connect").onclick = async () => {
 
 document.getElementById("burn-address").innerText = BURN_ADDRESS;
 
+document.getElementById("burn-qty").onchange = async () => {
+  const send_amount = document.getElementById("burn-qty").value;
+  if (isNaN(Number(send_amount)) && send_amount !== "all") return;
+  document.getElementById("mint-qty").value = send_amount == "all" ? Number(BigInt(await sgb_token_contract.methods.balanceOf(connected_account).call()) / (10n ** 18n) / 10n) : send_amount / 10;
+}
+
 document.getElementById("burn-web3").onclick = async () => {
-  const send_amount = prompt("How much to burn? 'all' to burn all.");
+  const send_amount = document.getElementById("burn-qty").value;
+  if (isNaN(Number(send_amount)) && send_amount !== "all") {
+    alert("Amount to send must be a number or 'all'");
+    return;
+  }
   const receipt = await sgb_token_contract.methods.transfer(BURN_ADDRESS, send_amount == "all" ? await sgb_token_contract.methods.balanceOf(connected_account).call() : String(BigInt(send_amount) * 10n ** 18n)).send({ from: connected_account }); //the 1 is just a placeholder
   document.getElementById("tx-hash").value = receipt.transactionHash;
   document.getElementById("tx-hash").disabled = true;
@@ -508,6 +521,7 @@ document.getElementById("burn-web3").onclick = async () => {
 };
 
 document.getElementById("burn-manually").onclick = () => {
+  document.getElementById("manual-text").style.display = "block";
   document.getElementById("tx-hash").disabled = false;
   document.getElementById("submit").disabled = false;
 };
