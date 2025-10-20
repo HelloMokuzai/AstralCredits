@@ -44,7 +44,7 @@
                                         	<p>
 											<label for="burn-qty">Burn QTY (XAC)</label>
 											<input id="burn-qty" type="text" placeholder="10" disabled>
-                                          	<sub>Amount of XAC on SONGBIRD to be burned ('all' to burn total balance)</sub>
+                                          	<sub>Amount of XAC on SONGBIRD to be burned (Type 'all' to burn total balance)</sub>
                                             </p>
                                             <label for="mint-qty">Mint QTY (F-XAC)</label>
 											<input id="mint-qty" type="text" placeholder="1" disabled>
@@ -90,14 +90,14 @@
 								</li>
 								<li class="icon solid fa-coins">
 									<h3>STEP 2. <b>Specify Amount</b></h3>
-									<p>Specify the amount of XAC on Songbird that you wish to burn. The system will display an equivalent ratio of the total supply of XAC on Flare to be received (10:1). Type 'all' to burn your entire balance.</p>
+									<p>Specify the amount of XAC on Songbird that you wish to burn. The system will display an equivalent ratio of the total supply of XAC on Flare to be received (10:1). <b>Type 'all' if you wish to burn your entire balance.</b></p>
 								</li>
 								<li class="icon solid fa-fire-alt">
 									<h3>STEP 3. <b>Burn XAC on SONGBIRD</b></h3>
 									<p>Click the <b>Burn XAC</b> button and sign the transaction to send the specified amount of XAC on Songbird to the Burn Address and submit the Tx hash as proof. (For instructions to manually burn XAC, <a href="#manual">see below</a>.)</p>
 								</li>
 								<li class="icon solid fa-check-circle">
-									<h3>STEP 4. <b>Receive F-XAC on FLARE</b></h3>
+									<h3>STEP 4. <b>Mint F-XAC on FLARE</b></h3>
 									<p>Click the <b>Mint FXAC</b> button to submit the signed Tx Hash to the Flare bridge contract. If the Tx Hash is valid, the specified quantity of F-XAC on Flare will be minted and sent to you!</p>
 								</li>
 							</ul>
@@ -115,7 +115,7 @@
 							<p><strong>What is the total supply of XAC on Flare?</strong></p>
                             <blockquote>There is a hard-cap of 100 MILLION F-XAC tokens on Flare. Though this value is theoretical only as there is a non-zero amount of tokens which have been burned or lost. Since F-XAC is newly minted on completion of the bridging process, the total supply for F-XAC on-chain will reflect the amount of tokens minted at that time.</blockquote>
 							<p><strong>Why do I receive less tokens when bridging to Flare?</strong></p>
-                            <blockquote>Whilst there are 1 BILLION XAC tokens on Songbird, As voted by the Community in the Astral Credits Discord there is a hard-cap of just 100 MILLION F-XAC tokens on Flare - a ratio of 10:1. When burning tokens on Songbird, you can expect to receive an equivalent ratio of the total supply of tokens on Flare.</blockquote>
+                            <blockquote>Whilst there are 1 BILLION XAC tokens on Songbird - As voted by the Community in the Astral Credits Discord - There is a hard-cap of just 100 MILLION F-XAC tokens on Flare (a ratio of 10:1). When burning tokens on Songbird, you can expect to receive an equivalent ratio of the total supply of tokens on Flare.</blockquote>
                             <p><strong>Why a bridge instead of a snapshot?</strong></p>
                             <blockquote>Since we aim to continue supporting XAC on both networks. Burn-to-Mint was chosen as the bridging method of choice as it ensures relative scarcity for XAC tokens on Songbird, whilst simultaneously maintaining a tight circulating supply for XAC on Flare.</blockquote>
 							<header id="manual">
@@ -123,10 +123,9 @@
                             </header>
 							<p><strong>To manually burn XAC on Songbird</strong></p>
 							<ol>
-								<li>Using your web3 wallet of choice - Send XAC tokens to the burn address:<br>
-								<code>0xaAaAaAaaAaAaAaaAaAAAAAAAAaaaAaAaAaaAaaAa</code> OR <code>burnxac.sgb</code></li>
+								<li>Using your web3 wallet of choice - Send XAC tokens to the burn address: <code>0xaAaAaAaaAaAaAaaAaAAAAAAAAaaaAaAaAaaAaaAa</code> or Songbird Domain <code>burnxac.sgb</code></li>
 								<li>Using the <a href="https://songbird-explorer.flare.network/" target="_blank">Songbird Explorer</a> - Find your transaction and copy the Tx Hash.</li>
-								<li>Using the bridge, open the <a href="#menu">MENU <i class="icon solid fa-bars"></i></a> and connect your wallet.</li>
+								<li>Using the bridge, open the <a href="#menu">MENU <i class="icon solid fa-bars"></i></a> and connect your Web3 wallet.</li>
 								<li>Click the <b>Submit Manually</b> button and paste your Hash into the Tx Hash field.</li>
 								<li>Click the <b>Mint F-XAC</b> button to validate the Tx Hash and mint your F-XAC tokens!</li>
 							</ol>
@@ -212,6 +211,7 @@
 	</body>
 
 </html>
+
 
 
 
