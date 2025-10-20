@@ -44,21 +44,21 @@
                                         	<p>
 											<label for="burn-qty">Burn QTY (XAC)</label>
 											<input id="burn-qty" type="text" placeholder="10" disabled>
-                                          	<sub>Amount of XAC on SONGBIRD to be burned (can do 'all' to burn all)</sub>
+                                          	<sub>Amount of XAC on SONGBIRD to be burned ('all' to burn total balance)</sub>
                                             </p>
                                             <label for="mint-qty">Mint QTY (F-XAC)</label>
 											<input id="mint-qty" type="text" placeholder="1" disabled>
                                             <sub>Amount of F-XAC on FLARE to be received</sub>
 											</p>
 										<ul>
-                                        	<li><button class="button primary fit" id="burn-web3" disabled>Burn with Web3 Wallet<i class="icon solid fa-check-circle"></i></button></li>
-											<li><button class="button fit" id="burn-manually" onclick="approve()" disabled>Burn Manually</button></li>
+                                        	<li><button class="button primary fit" id="burn-web3" disabled><i class="icon solid fa-fire-alt"></i> Burn XAC</button></li>
+											<li><button class="button fit" id="burn-manually" onclick="approve()" disabled>Submit Manually</button></li>
 										</ul>
-                    <p style="display: none; overflow-wrap: break-word;" id="manual-text">Send XAC to the burn address <span id="burn-address"></span>, and save the TX hash of the burn.</p>
+                    						<p style="display: none; overflow-wrap: break-word;" id="manual-text">Send XAC to the burn address <code><span id="burn-address"></span></code>, copy & paste the Tx Hash below and click <b>Mint FXAC</b></p>
                                         	<label for="tx-hash">Tx Hash <i class="icon solid fa-clone"></i></label>
 											<input id="tx-hash" type="text" placeholder="" disabled>
                                             <br>
-                                            <button class="button" id="submit" disabled>Submit</button>
+                                            <button class="button" id="submit" disabled><i class="icon solid fa-check-circle"></i> Mint F-XAC</button>
 									</div>
 								</li>
 							</ul>
@@ -94,12 +94,14 @@
 								</li>
 								<li class="icon solid fa-burn">
 									<h3>STEP 3. <b>Burn XAC on SONGBIRD</b></h3>
-									<p>Click the <b>Burn & Mint</b> button and sign the transaction to burn the specified amount of XAC on Songbird and submit the Tx hash as proof. (To burn tokens manually, <a href="">see below</a>.)</p>
+									<p>Click the <b>Burn XAC</b> button and sign the transaction to send the specified amount of XAC on Songbird to the <a href="">Burn Address</a> and submit the Tx hash as proof. (For manual burn, <a href="">see below</a>.)</p>
 								</li>
 								<li class="icon solid fa-check-circle">
 									<h3>STEP 4. <b>Receive F-XAC on FLARE</b></h3>
-									<p>The signed Tx Hash will then be submitted to the Flare bridge contract, with the amount of F-XAC on Flare as specified being minted and sent to you!</p>
+									<p>Click the <b>Mint FXAC</b> button to submit the signed Tx Hash to the Flare bridge contract. If valid the quantity of F-XAC on Flare as specified will be minted and sent to you!</p>
 								</li>
+								<p><b>Ready to get started?</b></p>
+								<p><a href="#menu" class="button large discord" target="_blank"><b>Burn & Mint</b></a></p>
 							</ul>
 						</div>
                         </section>
@@ -198,5 +200,6 @@
 	</body>
 
 </html>
+
 
 
