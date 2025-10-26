@@ -11,6 +11,9 @@ contract AstralPlane {
   mapping(string => Claim) public claims;
   address public immutable signer_address;
   address public token_address;
+  address public immutable pauserAddress;
+
+  bool private _mintPause = false;
  
   event Claimed(
     address claimer,
@@ -18,8 +21,13 @@ contract AstralPlane {
     string tx_hash
   );
  
-  constructor(address _signer_address) {
+  constructor(address _signer_address, address _pauserAddress) {
     signer_address = _signer_address;
+    pauserAddress = _pauserAddress;
+  }
+
+  function isPaused() external view returns (bool) {
+    return _mintPause;
   }
 
   //MUST call and set before bridge is usable
@@ -27,6 +35,16 @@ contract AstralPlane {
     //so it can only be set once
     require(token_address == address(0));
     token_address = _token_address;
+  }
+
+  function mintPause() external {
+    require(pauserAddress == msg.sender, "Need to be mint pauser address");
+    _mintPause = true;
+  }
+
+  function mintUnpause() external {
+    require(pauserAddress == msg.sender, "Need to be mint pauser address");
+    _mintPause = false;
   }
  
   //the signer MUST make sure the tx_hash is always lowercase
@@ -38,6 +56,7 @@ contract AstralPlane {
  
   //CEI or something
   function claim(address claimer, string calldata tx_hash, uint256 amount, uint8 _v, bytes32 _r, bytes32 _s) external returns (bool) {
+    require(!_mintPause, "Minting is currently paused");
     require(msg.sender == token_address, "Must claim from bridge by calling the token contract");
     require(amount > 0, "Amount claimed needs to be greater than zero");
     require(claims[tx_hash].claim_amount == 0, "That tx hash has already been claimed"); //means uninitalised

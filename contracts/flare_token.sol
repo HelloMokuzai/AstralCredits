@@ -14,6 +14,7 @@ interface IERC20 {
 
 // AstralPlane - Bridge contract interface to check claims
 interface IAstralPlane {
+    function isPaused() external view returns (bool);
     function claim(address claimer, string calldata tx_hash, uint256 amount, uint8 _v, bytes32 _r, bytes32 _s) external returns (bool);
 }
 
@@ -91,6 +92,8 @@ contract FlareAstralCredits is IERC20 {
     //CEI
     function mintFromBurn(string calldata tx_hash, uint256 amount, uint8 _v, bytes32 _r, bytes32 _s) external {
         IAstralPlane astralPlane = IAstralPlane(astralPlaneAddress);
+
+        require(!astralPlane.isPaused(), "Mint paused, you will be able to mint after unpause");
 
         require(astralPlane.claim(msg.sender, tx_hash, amount, _v, _r, _s), "Call to bridge contract failed");
 

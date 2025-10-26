@@ -468,8 +468,8 @@ const FLARE_TOKEN_ABI = [
 
 //signer: 0x37987397aC240f0cbCaA10a669bC2C90A91C0d51
 const SGB_TOKEN_CONTRACT_ADDRESS = "0x61b64c643fCCd6ff34Fc58C8ddff4579A89E2723";
-const FLARE_TOKEN_CONTRACT_ADDRESS = "0xb627731F0c5517398657d6Ac9A31646003a9d630";
-//const BRIDGE_CONTRACT_ADDRESS = "0x2B62BD5684DCAde0e4487bb16263ad93C215C092";
+const FLARE_TOKEN_CONTRACT_ADDRESS = "0x9e66fFC3fA01BAa5E5AEBfaef06e26DBb5e23048";
+//const BRIDGE_CONTRACT_ADDRESS = "0xB88702799f8F01E3f4C101Fab92a3a757f33FcbE";
 
 const BURN_ADDRESS = "0x" + "a".repeat(40);
 
@@ -494,6 +494,10 @@ document.getElementById("connect").onclick = async () => {
     sgb_token_contract = new web3_user.eth.Contract(ERC20_ABI, SGB_TOKEN_CONTRACT_ADDRESS, {
       from: connected_account,
     });
+    document.getElementById("connect").innerText = "Connected";
+    document.getElementById("connected-address").href = "https://flare-explorer.flare.network/address/" + connected_account;
+    document.getElementById("connected-address").innerText = connected_account.slice(0, 14) + "..." + connected_account.slice(-4);
+    //
     document.getElementById("burn-qty").disabled = false;
     document.getElementById("burn-web3").disabled = false;
     document.getElementById("burn-manually").disabled = false;
