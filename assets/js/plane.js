@@ -320,7 +320,7 @@ const FLARE_TOKEN_ABI = [
 	}
 ];
 
-/*const BRIDGE_ABI = [
+const BRIDGE_ABI = [
 	{
 		"anonymous": false,
 		"inputs": [
@@ -464,12 +464,12 @@ const FLARE_TOKEN_ABI = [
 		"stateMutability": "view",
 		"type": "function"
 	}
-];*/
+];
 
 //signer: 0x37987397aC240f0cbCaA10a669bC2C90A91C0d51
 const SGB_TOKEN_CONTRACT_ADDRESS = "0x61b64c643fCCd6ff34Fc58C8ddff4579A89E2723";
 const FLARE_TOKEN_CONTRACT_ADDRESS = "0x9e66fFC3fA01BAa5E5AEBfaef06e26DBb5e23048";
-//const BRIDGE_CONTRACT_ADDRESS = "0xB88702799f8F01E3f4C101Fab92a3a757f33FcbE";
+const BRIDGE_CONTRACT_ADDRESS = "0xB88702799f8F01E3f4C101Fab92a3a757f33FcbE";
 
 const BURN_ADDRESS = "0x" + "a".repeat(40);
 
@@ -533,7 +533,10 @@ document.getElementById("burn-manually").onclick = () => {
 document.getElementById("submit").onclick = async () => {
   const tx_hash = document.getElementById("tx-hash").value;
   const result = await (await fetch("https://astral-credits-bot.fly.dev/bridge/sign?tx_hash=" + tx_hash)).json();
-  if (result.error) alert("Is that the correct tx hash?");
+  if (result.error) {
+    alert("Are you sure this is the correct tx hash for the burn? The burn address is 0xaaa...aaa");
+    return;
+  }
   await window.ethereum.request({
     method: 'wallet_switchEthereumChain',
     params: [{ chainId: "0xe" }],
@@ -542,8 +545,16 @@ document.getElementById("submit").onclick = async () => {
   const flare_token_contract = new web3_user.eth.Contract(FLARE_TOKEN_ABI, FLARE_TOKEN_CONTRACT_ADDRESS, {
     from: connected_account,
   });
-  //todo: check to make sure hash isn't already in the contract mapping of already claimed hashes (save the user from making a call that will fail)
+  //check to make sure hash isn't already in the contract mapping of already claimed hashes (save the user from paying to making a call that will fail)
+  const bridge_contract = new web3_user.eth.Contract(BRIDGE_ABI, BRIDGE_CONTRACT_ADDRESS, {
+    from: connected_account,
+  });
+  if ((await bridge_contract.methods.claims(tx_hash).call()).claim_amount !== "0") {
+    alert("You seem to have already claimed that TX!");
+    return;
+  }
   const receipt = await flare_token_contract.methods.mintFromBurn(tx_hash, BigInt(result.amount), result.v, result.r, result.s).send({ from: connected_account });
+  if (receipt.status == 0) alert("Failed to mint. Should not happen unless mint is paused.");
   document.getElementById("result").innerText = "TX Hash";
   document.getElementById("result").href = `https://flare-explorer.flare.network/tx/${receipt.transactionHash}`;
 };
