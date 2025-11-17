@@ -473,6 +473,11 @@ const BRIDGE_CONTRACT_ADDRESS = "0xB88702799f8F01E3f4C101Fab92a3a757f33FcbE";
 
 const BURN_ADDRESS = "0x" + "a".repeat(40);
 
+new (new Web3("https://flare-api.flare.network/ext/C/rpc")).eth.Contract(FLARE_TOKEN_ABI, FLARE_TOKEN_CONTRACT_ADDRESS).methods.totalSupply().call().then((ts) => {
+  //18 decimals
+  document.getElementById("circulating-supply").innerText = (BigInt(ts) / (10n ** 18n)).toString().split(".")[0] + "~"; //cut off decimals
+});
+
 document.getElementById("ContractAddress").value = FLARE_TOKEN_CONTRACT_ADDRESS;
 
 let web3_user;
