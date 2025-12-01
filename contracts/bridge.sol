@@ -20,6 +20,9 @@ contract AstralPlane {
     uint256 claim_amount,
     string tx_hash
   );
+
+  event Paused();
+  event UnPaused();
  
   constructor(address _signer_address, address _pauserAddress) {
     signer_address = _signer_address;
@@ -40,11 +43,13 @@ contract AstralPlane {
   function mintPause() external {
     require(pauserAddress == msg.sender, "Need to be mint pauser address");
     _mintPause = true;
+    emit Paused();
   }
 
   function mintUnpause() external {
     require(pauserAddress == msg.sender, "Need to be mint pauser address");
     _mintPause = false;
+    emit UnPaused();
   }
  
   //the signer MUST make sure the tx_hash is always lowercase
