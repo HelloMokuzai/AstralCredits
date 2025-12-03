@@ -2601,7 +2601,7 @@ input, select, textarea {
 		input[type="button"].submit,
 		button.submit,
 		.button.submit {
-    	background-color: #21f33b;
+    	background-color: #1AA42F;
     	box-shadow: none !important;
     	color: #ffffff !important;
 		}
@@ -2611,7 +2611,7 @@ input, select, textarea {
     	input[type="button"].submit:hover,
     	button.submit:hover,
     	.button.submit:hover {
-        background-color: #4dfe63 !important;
+        background-color: #31ca20 !important;
     	}
 
     	input[type="submit"].submit:active,
@@ -2619,7 +2619,7 @@ input, select, textarea {
     	input[type="button"].submit:active,
     	button.submit:active,
     	.button.submit:active {
-        background-color: #18c732 !important;
+        background-color: #19912b !important;
     	}
 
 		/* Standard DISABLED */
@@ -4464,4 +4464,5 @@ input, select, textarea {
 	body.is-mobile.landing #footer {
 		background-color: #1d242a;
 	}
+
 
