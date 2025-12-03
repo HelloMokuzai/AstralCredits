@@ -2611,7 +2611,7 @@ input, select, textarea {
     	input[type="button"].submit:hover,
     	button.submit:hover,
     	.button.submit:hover {
-        background-color: #31ca20 !important;
+        background-color: #2BD143 !important;
     	}
 
     	input[type="submit"].submit:active,
@@ -2619,7 +2619,7 @@ input, select, textarea {
     	input[type="button"].submit:active,
     	button.submit:active,
     	.button.submit:active {
-        background-color: #19912b !important;
+        background-color: #168028 !important;
     	}
 
 		/* Standard DISABLED */
@@ -4464,5 +4464,6 @@ input, select, textarea {
 	body.is-mobile.landing #footer {
 		background-color: #1d242a;
 	}
+
 
 
