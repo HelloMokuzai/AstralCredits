@@ -2,19 +2,27 @@
   "tokens": [
     {
       "chainId": 19,
-      "name": "Nishi Coin",
-      "symbol": "NISHI",
-      "decimals": 18,
-      "address": "0xCa80B7557aDbc98426C0B921f8d80c3A5c20729F",
-      "logoURI": "https://raw.githubusercontent.com/HelloMokuzai/AstralCredits/refs/heads/main/images/tokens/NISHI.gif"
-    },
-    {
-      "chainId": 19,
       "name": "Astral Credits",
       "symbol": "XAC",
       "decimals": 18,
       "address": "0x61b64c643fCCd6ff34Fc58C8ddff4579A89E2723",
       "logoURI": "https://raw.githubusercontent.com/HelloMokuzai/AstralCredits/refs/heads/main/images/tokens/XAC.png"
+    },
+    {
+      "chainId": 14,
+      "name": "Flare Astral Credits",
+      "symbol": "FXAC",
+      "decimals": 18,
+      "address": "0x525Cf2895907d65b6AF8cD2c44007fB7C7ACa8dF",
+      "logoURI": "https://raw.githubusercontent.com/HelloMokuzai/AstralCredits/refs/heads/main/images/tokens/FXAC.png"
+    },
+    {
+      "chainId": 19,
+      "name": "Nishi Coin",
+      "symbol": "NISHI",
+      "decimals": 18,
+      "address": "0xCa80B7557aDbc98426C0B921f8d80c3A5c20729F",
+      "logoURI": "https://raw.githubusercontent.com/HelloMokuzai/AstralCredits/refs/heads/main/images/tokens/NISHI.gif"
     },
     {
       "chainId": 19,
